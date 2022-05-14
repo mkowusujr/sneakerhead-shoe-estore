@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect
 
 inventory_view = Blueprint('inventory_view', __name__)
 
