@@ -1,11 +1,12 @@
-from os import path
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from os import path
 # from . import models
 
+db = SQLAlchemy()
+from .models import Customer, Cart, ReservedShoe, Shoe
 from .views.inventory import inventory_view
 
-db = SQLAlchemy()
 DB_NAME = 'sneakerhead.db'
 
 def create_app():
@@ -14,7 +15,6 @@ def create_app():
     # db setup
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     db.init_app(app)
-    from .models import Customer, Cart, ReservedShoe, Shoe
     create_database(app)
 
     # load blueprints
