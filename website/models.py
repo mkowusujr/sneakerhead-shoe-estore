@@ -12,9 +12,10 @@ class Cart(db.Model):
 
 
 class ReservedShoe(db.Model):
+    __tablename__ = 'reserved_shoe'
     id = db.Column(db.Integer(), primary_key=True)
-    # shoe_id = db.Column(db.Integer(), db.ForeignKey('shoe.id')) # one to one
-    # reserved_shoe = relationship("Shoe", back_populates="reservedshoe", uselist=False)
+    shoe_id = db.Column(db.Integer(), db.ForeignKey('shoe.id')) # one to one
+    reserved_shoe = db.relationship("Shoe", backref="reserved_shoe", uselist=False)
     quantity = db.Column(db.Integer(), nullable=False)
 
 
