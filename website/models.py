@@ -1,18 +1,28 @@
 from flask_sqlalchemy import SQLAlchemy
-from . import db
-from flask_login import UserMixin
 
-class Customer(db.Model, UserMixin):
-    pass
+from . import db
+# from flask_login import UserMixin
+
+class Customer(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
 
 
 class Cart(db.Model):
-    pass
+    id = db.Column(db.Integer(), primary_key=True)
 
 
-class ReservedShoes(db.Model):
-    pass
+class ReservedShoe(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    # shoe_id = db.Column(db.Integer(), db.ForeignKey('shoe.id')) # one to one
+    # reserved_shoe = relationship("Shoe", back_populates="reservedshoe", uselist=False)
+    quantity = db.Column(db.Integer(), nullable=False)
 
 
-class Shoes(db.Model):
-    pass
+class Shoe(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(length=30), nullable=False)
+    brand = db.Column(db.String(length=30), nullable=False)
+    color = db.Column(db.String(length=30), nullable=False)
+    size = db.Column(db.Float(), nullable=False)
+    quantity = db.Column(db.Integer(), nullable=False)
+    price = db.Column(db.Float(), nullable=False)
