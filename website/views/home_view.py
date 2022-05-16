@@ -7,4 +7,4 @@ from .. import db
 @home_view.route('/')
 @home_view.route('/home')
 def home_page():
-    return "<h1>Welcome to the Homepage</h1>"
+    return render_template("home.html")
