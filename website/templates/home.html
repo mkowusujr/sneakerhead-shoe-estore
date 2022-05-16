@@ -8,4 +8,14 @@
 
 {% block body %}
     <h1>Welcome to the Homepage</h1>
+
+    <ul>
+        {% for shoe in recently_added %}
+            <li>
+                <p>{{ shoe.id  }}</p>
+                <a>{{ shoe.name  }}</a>
+                <p>{{ shoe.price  }}</p>
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}

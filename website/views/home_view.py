@@ -7,4 +7,5 @@ from .. import db
 @home_view.route('/')
 @home_view.route('/home')
 def home_page():
-    return render_template("home.html")
+    recently_added = Shoe.query.order_by(Shoe.id.desc()).limit(5)
+    return render_template("home.html", recently_added=recently_added)
