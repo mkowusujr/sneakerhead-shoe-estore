@@ -9,6 +9,7 @@
 {% block body %}
     <h1>Welcome to the Homepage</h1>
 
+    <!-- Recently Added Shoes -->
     <ul>
         {% for shoe in recently_added %}
             <li>
@@ -18,4 +19,11 @@
             </li>
         {% endfor %}
     </ul>
+
+    <!-- Shop Men, Women, Children -->
+    <!-- <ul>
+        {% for audience in audiences %}
+            
+        {% endfor %}
+    </ul> -->
 {% endblock %}
