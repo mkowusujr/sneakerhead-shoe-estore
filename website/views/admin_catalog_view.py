@@ -6,4 +6,5 @@ from .. import db
 
 @admin_catalog_view.route('/inventory')
 def inventory_page():
-    return "<h1>Welcome to the Inventory</h1>"
+    inventory = Shoe.query.all()
+    return render_template('admin_catalog.html', inventory=inventory)
