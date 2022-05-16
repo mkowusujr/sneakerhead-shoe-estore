@@ -25,3 +25,16 @@ def add_to_inventory():
     db.session.commit()
 
     return redirect('/inventory')
+
+
+@admin_catalog_view.route('/inventory/<int:id>', methods=['GET'])
+def place_holder(id):
+    return "later"
+
+
+@admin_catalog_view.route('/inventory/<int:id>', methods=['Delete'])
+def remove_from_inventory(id):
+    shoe = Shoe.query.filter(id=id).first_or_404()
+    db.session.delete(shoe)
+    db.session.commit()
+    return redirect('/inventory')
