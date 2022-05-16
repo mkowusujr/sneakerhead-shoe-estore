@@ -2340,3 +2340,11 @@ venv/Lib/site-packages/toml-0.10.2.dist-info/WHEEL
 venv/Scripts/autopep8.exe
 venv/Scripts/pycodestyle.exe
 help.md
+website/__pycache__/__init__.cpython-310.pyc
+website/__pycache__/models.cpython-310.pyc
+website/views/__pycache__/acct_mgmt_views.cpython-310.pyc
+website/views/__pycache__/admin_catalog_view.cpython-310.pyc
+website/views/__pycache__/cust_cart_views.cpython-310.pyc
+website/views/__pycache__/cust_catalog_views.cpython-310.pyc
+website/views/__pycache__/home_view.cpython-310.pyc
+website/views/__pycache__/inventory.cpython-310.pyc
