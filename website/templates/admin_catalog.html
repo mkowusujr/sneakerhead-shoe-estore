@@ -33,27 +33,9 @@
                 <td>{{ shoe.name }}</td>
                 <td>{{ shoe.brand }}</td>
                 <td>{{ shoe.price }}</td>
-                <!-- <td>
-                    <script>
-                        $('form').submit(function(e){
-                            event.preventDefault();
-                            var formAction = $(this).attr('action');
-                            /*xhttp.open("DELETE", this.href, true);
-                            xhttp.send();*/
-                            $.ajax({
-                               url: formAction,
-                               type: 'DELETE',
-                               success: function(data) {
-
-                               }
-                            })
-                        });
-                    </script>
-                    <a href="/inventory/{{shoe.id}}" onclick="sendDelete(event)">remove shoe</a>
-                    <form action="/inventory/{{shoe.id}}" method="DELETE" id="deleteform">
-                        <input type="submit" value="remove shoe">
-                    </form>
-                </td> -->
+                <td>
+                    <button onclick="sendDelete('/inventory/{{shoe.id}}')">remove shoe</button>
+                </td> 
             </tr>
         {% endfor %}
     </table>
