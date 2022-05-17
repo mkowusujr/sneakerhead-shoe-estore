@@ -1,15 +1,10 @@
 from select import select
-from flask import Blueprint, Response, render_template, redirect, request
+from flask import Blueprint, Response, render_template, redirect, request, json, jsonify
 from ..models import ReservedShoe, Shoe, Cart
 admin_catalog_view = Blueprint('admin_catalog_view', __name__)
 from .. import db
 
-@admin_catalog_view.route('/inventory', methods=['GET'])
-def display_inventory():
-    inventory = Shoe.query.all()
-    return render_template('admin_catalog.html', inventory=inventory)
-    
-
+  
 @admin_catalog_view.route('/inventory', methods=['POST'])
 def add_to_inventory():
     new_shoe = Shoe(
@@ -25,6 +20,35 @@ def add_to_inventory():
     db.session.commit()
 
     return redirect('/inventory')
+
+
+@admin_catalog_view.route('/inventory', methods=['GET'])
+def display_inventory():
+    inventory = Shoe.query.all()
+    return render_template('admin_catalog.html', inventory=inventory)
+  
+
+@admin_catalog_view.route('/inventory/<int:id>', methods=['PUT'])
+def update_product(id):
+    # data1 = request.get_data()
+    data = request.get_json()
+    updated_shoe = Shoe.query.get_or_404(id)
+    updated_shoe.name = data['name']
+    updated_shoe.brand = data['brand']
+    updated_shoe.price = data['price']
+    db.session.commit()
+    # shoe = Shoe(
+    #     id = id,
+    #     name = data['name'],
+    #     brand = data['brand'],
+    #     color = "N/A",
+    #     size = 100,
+    #     quantity = 100,
+    #     price = data['price']
+    # )
+    # data3 = request.json()
+    # data4 = json.loads(request.data)
+    return Response("", 200)
 
 
 @admin_catalog_view.route('/inventory/<int:id>', methods=['Delete'])

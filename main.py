@@ -1,4 +1,3 @@
-from dbm import dumb
 from website import create_app
 
 app = create_app()

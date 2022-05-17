@@ -26,13 +26,26 @@
             <th>Shoe Name</th>
             <th>Brand Name</th>
             <th>Price</th>
+            <th>Update</th>
+            <th>Delete</th>
         </tr>
         {% for shoe in inventory %}
             <tr>
-                <td>{{ shoe.id }}</td>
-                <td>{{ shoe.name }}</td>
-                <td>{{ shoe.brand }}</td>
-                <td>{{ shoe.price }}</td>
+                <form id="put-form" action="/inventory/{{ shoe.id }}" method="POST">
+                    <td>{{ shoe.id }}</td>
+                    <td>
+                        <input type="text" name="name" placeholder="{{ shoe.name }}" required>
+                    </td>
+                    <td>
+                        <input type="text" name="brand" placeholder="{{ shoe.brand }}" required>
+                    </td>
+                    <td>
+                        <input type="number" name="price" placeholder="{{ shoe.price }}" required>
+                    </td>
+                    <td>
+                        <button type="submit">update item</button>
+                    </td>
+                </form>
                 <td>
                     <button onclick="sendDelete('/inventory/{{shoe.id}}')">remove shoe</button>
                 </td> 
