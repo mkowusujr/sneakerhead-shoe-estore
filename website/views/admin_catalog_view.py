@@ -3,7 +3,7 @@ from flask import Blueprint, Response, render_template, redirect, request, json,
 from ..models import ReservedShoe, Shoe, Cart
 admin_catalog_view = Blueprint('admin_catalog_view', __name__)
 from .. import db
-
+from types import SimpleNamespace
   
 @admin_catalog_view.route('/inventory', methods=['POST'])
 def add_to_inventory():
@@ -37,6 +37,9 @@ def update_product(id):
     updated_shoe.brand = data['brand']
     updated_shoe.price = data['price']
     db.session.commit()
+    x = Shoe.from_json(data)
+    # x = json.loads(data, object_hook=lambda d: SimpleNamespace(**d))
+    
     # shoe = Shoe(
     #     id = id,
     #     name = data['name'],

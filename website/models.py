@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-
+import json
 from . import db
 # from flask_login import UserMixin
 
@@ -58,6 +58,10 @@ class Shoe(db.Model):
     size = db.Column(db.Float(), nullable=False)
     quantity = db.Column(db.Integer(), nullable=False)
     price = db.Column(db.Float(), nullable=False)
+
+    @classmethod
+    def from_json(cls, json_string):
+        return cls(**json_string)
 
     def __repr__(self):
         return '<Shoe {}, name={}>'.format(self.id, self.name)
