@@ -54,14 +54,45 @@ class Shoe(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(length=30), nullable=False)
     brand = db.Column(db.String(length=30), nullable=False)
-    color = db.Column(db.String(length=30), nullable=False)
-    size = db.Column(db.Float(), nullable=False)
-    quantity = db.Column(db.Integer(), nullable=False)
     price = db.Column(db.Float(), nullable=False)
 
+    # one to many relationship, one shoe many colors
+    colors = db.relationship("Color", back_populates="shoe", lazy=True) 
+    
     @classmethod
     def from_json(cls, json_string):
         return cls(**json_string)
 
     def __repr__(self):
         return '<Shoe {}, name={}>'.format(self.id, self.name)
+
+
+class Color(db.Model):
+    __tablename__ = 'color'
+
+    id = db.Column(db.Integer(), primary_key=True)
+    color = db.Column(db.String(length=30))
+    
+    # one to many relationship, one color many quantity per sizes
+    quan_per_size = db.relationship("Quantity_Per_Size", back_populates="color", lazy=True)
+    
+    # Many colors belonging to one shoe
+    shoe_id = db.Column(db.Integer(), db.ForeignKey('shoe.id'))
+    shoe = db.relationship('Shoe', back_populates='colors')
+
+    def __repr__(self):
+        return '<clrszquan {}, quantbl={}, {}>'.format(self.id, self.quantity_table_id, self.quantity_table)
+
+
+class Quantity_Per_Size(db.Model):
+    __tablename__ = 'quantity_per_size'
+
+    id = db.Column(db.Integer(), primary_key=True)
+    size = db.Column(db.Float())
+    quantity = db.Column(db.Integer())
+
+    # many quantity per sizes belonging to one color
+    color_id = db.Column(db.Integer(), db.ForeignKey('color.id'))
+    color = db.relationship('Color', back_populates='quan_per_size')
+    def __repr__(self):
+        return "<quanpersize {}, size {}, quan{}>".format(self.id, self.size, self.quantity)

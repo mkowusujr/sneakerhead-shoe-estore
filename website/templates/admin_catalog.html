@@ -31,7 +31,7 @@
         </tr>
         {% for shoe in inventory %}
             <tr>
-                <form id="put-form" action="/inventory/2" method="POST">
+                <form id="put-form" action="/inventory/{{ shoe.id }}" method="POST">
                     <td>{{ shoe.id }}</td>
                     <td>
                         <input type="text" name="name" placeholder="{{ shoe.name }}" required>

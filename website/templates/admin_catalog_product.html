@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}{{shoe.name}}{% endblock %}
+
+{% block body %}
+    <h1>Shoe Details</h1>
+    <p>{{ shoe.name }}</p>
+    <p>{{ shoe.brand }}</p>
+    <p>{{ shoe.price }}</p>
+
+    {% for color in shoe.colors%}
+        <h2>Shoe Colors</h2>
+        <p>{{ color.color }}</p>
+        {% for quantity in color.quan_per_size%}
+            <h3>Quantity of shoes per each size</h3>
+            <p>{{ quantity.size }}</p>
+            <p>{{ quantity.quantity }}</p>
+        {% endfor %}
+    {% endfor %}
+{% endblock%}
+

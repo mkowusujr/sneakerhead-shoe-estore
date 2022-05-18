@@ -1,6 +1,6 @@
 from select import select
 from flask import Blueprint, Response, render_template, redirect, request, json, jsonify
-from ..models import ReservedShoe, Shoe, Cart
+from ..models import Color, Quantity_Per_Size, ReservedShoe, Shoe, Cart
 admin_catalog_view = Blueprint('admin_catalog_view', __name__)
 from .. import db
 from types import SimpleNamespace
@@ -27,6 +27,10 @@ def display_inventory():
     inventory = Shoe.query.all()
     return render_template('admin_catalog.html', inventory=inventory)
   
+@admin_catalog_view.route('/inventory/<int:id>')
+def display_shoe(id):
+    shoe = Shoe.query.get_or_404(id)
+    return render_template('admin_catalog_product.html', shoe=shoe)
 
 @admin_catalog_view.route('/inventory/<int:id>', methods=['PUT'])
 def update_product(id):
