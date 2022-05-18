@@ -10,9 +10,9 @@ def add_to_inventory():
     new_shoe = Shoe(
         name = request.form['name'],
         brand = request.form['brand'],
-        color = request.form['color'],
-        size = request.form['size'],
-        quantity = request.form['quantity'],
+        # color = request.form['color'],
+        # size = request.form['size'],
+        # quantity = request.form['quantity'],
         price = request.form['price']
     )
 
