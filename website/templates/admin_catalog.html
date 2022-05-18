@@ -31,6 +31,40 @@
         </tr>
         {% for shoe in inventory %}
             <tr>
+                <form id="put-form" action="/inventory/2" method="POST">
+                    <td>{{ shoe.id }}</td>
+                    <td>
+                        <input type="text" name="name" placeholder="{{ shoe.name }}" required>
+                    </td>
+                    <td>
+                        <input type="text" name="brand" placeholder="{{ shoe.brand }}" required>
+                    </td>
+                    <td>
+                        <input type="number" name="price" placeholder="{{ shoe.price }}" required>
+                    </td>
+                    <td>
+                        <button type="submit">update item</button>
+                    </td>
+                </form>
+                <td>
+                    <button onclick="sendDeleteRequest('/inventory/{{shoe.id}}')">remove shoe</button>
+                </td> 
+            </tr>
+        {% endfor %}
+    </table>
+    
+    <h1>Test</h1>
+    <table>
+        <tr>
+            <th>Product ID</th>
+            <th>Shoe Name</th>
+            <th>Brand Name</th>
+            <th>Price</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        {% for shoe in inventory %}
+            <tr>
                 <form id="put-form" action="/inventory/{{ shoe.id }}" method="POST">
                     <td>{{ shoe.id }}</td>
                     <td>
@@ -47,7 +81,7 @@
                     </td>
                 </form>
                 <td>
-                    <button onclick="sendDelete('/inventory/{{shoe.id}}')">remove shoe</button>
+                    <button onclick="sendDeleteRequest('/inventory/{{shoe.id}}')">remove shoe</button>
                 </td> 
             </tr>
         {% endfor %}
