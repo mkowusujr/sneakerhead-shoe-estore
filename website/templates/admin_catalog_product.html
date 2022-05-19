@@ -8,18 +8,24 @@
     <p>{{ shoe.brand }}</p>
     <p>{{ shoe.price }}</p>
 
+    <h2>Shoe Colors</h2>
     {% for color in shoe.colors%}
-        <h2>Shoe Colors</h2>
-        <p>{{ color.color }}</p>
+        <!-- <p>{{ color.color }}</p> -->
+        <form id="put-form" action="/inventory/{{shoe.id}}/{{color.id}}" method="POST">
+            <input type="text" name="color" value="{{color.color}}">
+            <input type="submit" value="edit color name">
+        </form>
+    {% endfor %}    
+
+    <h2>Quantity of shoes per each size</h2>
+    {% for color in shoe.colors%}
+        <h4>Quantites for the color {{ color.color }}</h4>
         {% for quantity in color.quan_per_size%}
-            <h3>Quantity of shoes per each size</h3>
             <form id="put-form" action="/inventory/{{shoe.id}}/{{color.id}}/{{quantity.id}}" method="POST">
                 <p>{{ quantity.size }}</p>
-                <!-- <input type="number" name="size" value="{{quantity.size}}"> -->
-                <input type="number" name="quantity" value="{{quantity.quantity}}">
+                <input type="number" name="quantity" min= "0" value="{{quantity.quantity}}">
                 <input type="submit" value="edit quantity">
             </form>
-            <!-- <p>{{ quantity.quantity }}</p> --> 
         {% endfor %}
     {% endfor %}
 {% endblock%}

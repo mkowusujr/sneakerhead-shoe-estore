@@ -41,32 +41,23 @@ def update_product(id):
     updated_shoe.brand = data['brand']
     updated_shoe.price = data['price']
     db.session.commit()
-    x = Shoe.from_json(data)
-    # x = json.loads(data, object_hook=lambda d: SimpleNamespace(**d))
-    
-    # shoe = Shoe(
-    #     id = id,
-    #     name = data['name'],
-    #     brand = data['brand'],
-    #     color = "N/A",
-    #     size = 100,
-    #     quantity = 100,
-    #     price = data['price']
-    # )
-    # data3 = request.json()
-    # data4 = json.loads(request.data)
     return Response("/inventory", 200)
 
 @admin_catalog_view.route('/inventory/<int:shoe_id>/<int:color_id>', methods=['PUT'])
 def update_product_color(shoe_id, color_id):
-    pass
+    data = request.get_json()
+    color = Color.query.get_or_404(color_id)
+    color.color = data['color']
+    db.session.add(color)
+    db.session.commit()
+    print(data)
+    return Response("/inventory/" + str(shoe_id), 200)
 
 
 @admin_catalog_view.route('/inventory/<int:shoe_id>/<int:color_id>/<int:quan_id>', methods=['PUT'])
 def update_product_color_quantity(shoe_id, color_id, quan_id):
     data = request.get_json()
     quan = Quantity_Per_Size.query.get_or_404(quan_id)
-    # quan.size = data['size']
     quan.quantity = data['quantity']
     db.session.add(quan)
     db.session.commit()
