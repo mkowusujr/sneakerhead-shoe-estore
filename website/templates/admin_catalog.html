@@ -34,16 +34,20 @@
                 <form id="put-form" action="/inventory/{{ shoe.id }}" method="POST">
                     <td>{{ shoe.id }}</td>
                     <td>
-                        <input type="text" name="name" placeholder="{{ shoe.name }}" required>
+                        <p>{{ shoe.name }}</p>
+                        <!-- <input type="text" name="name" placeholder="{{ shoe.name }}" required> -->
                     </td>
                     <td>
-                        <input type="text" name="brand" placeholder="{{ shoe.brand }}" required>
+                        <p>{{ shoe.brand }}</p>
+                        <!-- <input type="text" name="brand" placeholder="{{ shoe.brand }}" required> -->
                     </td>
                     <td>
-                        <input type="number" name="price" placeholder="{{ shoe.price }}" required>
+                        <p>{{ shoe.price }}</p>
+                        <!-- <input type="number" name="price" placeholder="{{ shoe.price }}" required> -->
                     </td>
                     <td>
-                        <button type="submit">update item</button>
+                        <button onclick="redirectUrl('/inventory/{{shoe.id}}')">update shoe</button>
+                        <!-- <button type="submit">update item</button> -->
                     </td>
                 </form>
                 <td>

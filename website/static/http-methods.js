@@ -8,8 +8,8 @@ $(function sendPutRequest(){
             e.preventDefault();
             const data = new FormData(e.target);
             const value = Object.fromEntries(data.entries());
-            var jsonForm = JSON.stringify(value)
-            var requestUrl = $(this).attr('action')
+            var jsonForm = JSON.stringify(value);
+            var requestUrl = $(this).attr('action');
             $.ajax({
                 url: requestUrl,
                 type: 'PUT',
