@@ -55,7 +55,7 @@ def update_product(id):
     # )
     # data3 = request.json()
     # data4 = json.loads(request.data)
-    return Response("", 200)
+    return Response("/inventory", 200)
 
 
 @admin_catalog_view.route('/inventory/<int:id>', methods=['Delete'])
@@ -63,4 +63,4 @@ def remove_from_inventory(id):
     shoe = Shoe.query.filter_by(id=id).first_or_404()
     db.session.delete(shoe)
     db.session.commit()
-    return Response("", 200)
+    return Response("/inventory", 200)

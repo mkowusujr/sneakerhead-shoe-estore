@@ -1,20 +1,4 @@
 /**
- * helper function for getting the redirect url for requsts
- * @param {*} requestUrl the request url being sent to the server
- * @returns the redirect url
- */
-function getRedirectUrl (requestUrl){
-    var parsedUrl = requestUrl.split('/')
-    var redirectUrl = ""
-    parsedUrl.forEach(string => {
-        if (isNaN(string)){
-            redirectUrl = redirectUrl + '/' + string
-        }
-    });
-    return redirectUrl
-}
-
-/**
  * helper function for sending put request. Get all the forms of this id and 
  * overrides their submit events
  */
@@ -31,8 +15,9 @@ $(function sendPutRequest(){
                 type: 'PUT',
                 contentType: "application/json",
                 data: jsonForm,
-                success: function(result){
-                    window.location.href = getRedirectUrl(requestUrl)
+                success: function(redirectUrl){
+                    // alert(result)
+                    window.location.href = redirectUrl
                 }
             });
         });
@@ -47,8 +32,8 @@ function sendDeleteRequest(requestUrl){
     $.ajax({
         url: requestUrl,
         type: 'DELETE',
-        success: function(result){
-            window.location.href = getRedirectUrl(requestUrl)
+        success: function(redirectUrl){
+            window.location.href = redirectUrl
         }
     });
 }
