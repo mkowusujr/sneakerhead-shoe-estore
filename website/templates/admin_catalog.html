@@ -46,7 +46,7 @@
                         <!-- <input type="number" name="price" placeholder="{{ shoe.price }}" required> -->
                     </td>
                     <td>
-                        <button onclick="redirectUrl('/inventory/{{shoe.id}}')">update shoe</button>
+                        <button onclick="redirectUrl('/inventory/{{shoe.id}}')">edit shoe</button>
                         <!-- <button type="submit">update item</button> -->
                     </td>
                 </form>
@@ -57,7 +57,7 @@
         {% endfor %}
     </table>
     
-    <h1>Test</h1>
+    <!-- <h1>Test</h1>
     <table>
         <tr>
             <th>Product ID</th>
@@ -88,6 +88,19 @@
                     <button onclick="sendDeleteRequest('/inventory/{{shoe.id}}')">remove shoe</button>
                 </td> 
             </tr>
+            
+            
+            {% if shoe.colors == [] %}
+                <p>not ready for sale, needs color options, edit shoe to fix this</p>
+            {% else %}
+                {% for color in shoe.colors %}
+                    {% if color.quantity == [] %}
+                        <p>not ready for sale, needs size options, edit shoe to fix this</p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %} 
+
+            
         {% endfor %}
-    </table>
+    </table> -->
 {% endblock %}

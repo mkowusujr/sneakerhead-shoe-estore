@@ -13,14 +13,19 @@
             <input type="number" name="price" placeholder="{{ shoe.price }}" required>
             <button type="submit">update item</button>
     </form>
-    <h2>Shoe Colors</h2>
-    {% for color in shoe.colors%}
-        <!-- <p>{{ color.color }}</p> -->
-        <form id="put-form" action="/inventory/{{shoe.id}}/{{color.id}}" method="POST">
-            <input type="text" name="color" value="{{color.color}}">
-            <input type="submit" value="edit color name">
-        </form>
-    {% endfor %}    
+    <div id="colors">
+        <h2>Shoe Colors</h2>
+        {% for color in shoe.colors%}
+            <!-- <p>{{ color.color }}</p> -->
+            <form id="put-form" action="/inventory/{{shoe.id}}/{{color.id}}" method="POST">
+                <input type="text" name="color" value="{{color.color}}">
+                <input type="submit" value="edit color name">
+            </form>
+            <button onclick="sendDeleteRequest('/inventory/{{shoe.id}}/{{color.id}}')">delete color</button>
+            {% endfor %}  
+        <br>
+        <button onclick="addColor('/inventory/{{shoe.id}}')">add color</button>
+    </div>  
     <div id="quantities">
         <h2>Quantity of shoes per each size</h2>
         {% for color in shoe.colors%}

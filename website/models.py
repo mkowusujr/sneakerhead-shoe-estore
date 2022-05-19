@@ -57,7 +57,9 @@ class Shoe(db.Model):
     price = db.Column(db.Float(), nullable=False)
 
     # one to many relationship, one shoe many colors
-    colors = db.relationship("Color", back_populates="shoe", lazy=True) 
+    # if a color is deleted all its children are too, if one of its
+    #children is delete it will be gone from color's list of children
+    colors = db.relationship("Color", back_populates="shoe", lazy=True, cascade='delete-orphan') 
     
     @classmethod
     def from_json(cls, json_string):
@@ -74,7 +76,7 @@ class Color(db.Model):
     color = db.Column(db.String(length=30))
     
     # one to many relationship, one color many quantity per sizes
-    quan_per_size = db.relationship("Quantity_Per_Size", back_populates="color", lazy=True, cascade='delete-orphan')
+    quan_per_size = db.relationship("Quantity_Per_Size", back_populates="color", lazy=True, cascade='all, delete, delete-orphan')
     
     # Many colors belonging to one shoe
     shoe_id = db.Column(db.Integer(), db.ForeignKey('shoe.id'))

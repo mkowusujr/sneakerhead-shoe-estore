@@ -10,18 +10,36 @@ function addForm(requestUrl, method){
     return form
 }
 
+function addColor(requestUrl){
+    var form = addForm(requestUrl, "POST");
+    var newColor = document.createElement("input");
+    newColor.setAttribute("type", "text");
+    newColor.setAttribute("name", "color");
+    newColor.setAttribute("placeholder", "enter color");
+    form.appendChild(newColor);
+
+    var submit = document.createElement("input");
+    submit.setAttribute("type", "submit");
+    submit.setAttribute("value", "add color");
+    form.appendChild(submit);
+
+    document.getElementById("colors").appendChild(form);
+}
+
 function addSize(requestUrl){
     form = addForm(requestUrl, "POST");
     var newSize = document.createElement("input");
     newSize.setAttribute("type", "number");
     newSize.setAttribute("name", "size");
     newSize.setAttribute("placeholder", "enter size");
+    newSize.setAttribute("min", "0");
     form.appendChild(newSize);
 
     var sizeQuantity = document.createElement("input");
     sizeQuantity.setAttribute("type", "number");
     sizeQuantity.setAttribute("name", "quantity");
     sizeQuantity.setAttribute("placeholder", "enter quantity");
+    sizeQuantity.setAttribute("min", "0");
     form.appendChild(sizeQuantity);
 
     var submit = document.createElement("input");

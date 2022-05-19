@@ -1,3 +1,4 @@
+import re
 from select import select
 from flask import Blueprint, Response, render_template, redirect, request, json, jsonify
 from ..models import Color, Quantity_Per_Size, ReservedShoe, Shoe, Cart
@@ -22,6 +23,21 @@ def add_to_inventory():
 
     return redirect('/inventory')
 
+@admin_catalog_view.route('/inventory/<int:shoe_id>', methods=['POST'])
+def add_product_color(shoe_id):
+    color = Color(
+        color = request.form['color']
+    )
+    db.session.add(color)
+    db.session.commit()
+
+    shoe = Shoe.query.get_or_404(shoe_id)
+    shoe.colors.append(color)
+    db.session.add(shoe)
+    db.session.commit()
+
+    return redirect("/inventory/" + str(shoe_id))
+
 
 @admin_catalog_view.route('/inventory/<int:shoe_id>/<int:color_id>', methods=['POST'])
 def add_product_color_quantity(shoe_id, color_id):
@@ -37,7 +53,6 @@ def add_product_color_quantity(shoe_id, color_id):
     db.session.add(color)
     db.session.commit()
     return redirect("/inventory/" + str(shoe_id))
-    # return Response("/inventory/" + str(shoe_id), 200)
 
 
 """
@@ -100,6 +115,14 @@ def delete_from_inventory(id):
     db.session.delete(shoe)
     db.session.commit()
     return Response("/inventory" + str(id), 200)
+
+
+@admin_catalog_view.route('/inventory/<int:shoe_id>/<int:color_id>', methods=['DELETE'])
+def delete_product_color(shoe_id, color_id):
+    color = Color.query.get_or_404(color_id)
+    db.session.delete(color)
+    db.session.commit()
+    return Response("/inventory/" + str(shoe_id), 200)
 
 @admin_catalog_view.route('/inventory/<int:shoe_id>/<int:color_id>/<int:quan_id>', methods=['DELETE'])
 def delete_product_color_quantity(shoe_id, color_id, quan_id):
