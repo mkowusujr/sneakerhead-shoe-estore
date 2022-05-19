@@ -6,4 +6,24 @@ from .. import db
 
 @cust_catalog_views.route('/releases')
 def releases_page():
-    return "<h1>Welcome to our Releases</h1>"
+    title = "New Releases"
+    collection = Shoe.query.all()
+    return render_template('catalog.html', title=title, collection=collection)
+
+@cust_catalog_views.route('/mens/releases')
+def mens_releases_page():
+    title = "New Releases"
+    collection = Shoe.query.filter_by(audience="Men")
+    return render_template('catalog.html', title=title, collection=collection)
+
+@cust_catalog_views.route('/womens/releases')
+def womens_releases_page():
+    title = "New Releases"
+    collection = Shoe.query.filter_by(audience="Womens")
+    return render_template('catalog.html', title=title, collection=collection)
+
+@cust_catalog_views.route('/kids/releases')
+def kids_releases_page():
+    title = "New Releases"
+    collection = Shoe.query.filter_by(audience="Kids")
+    return render_template('catalog.html', title=title, collection=collection)

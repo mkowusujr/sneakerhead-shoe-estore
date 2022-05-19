@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body%}
+    <ul>
+        {% for shoe in collection%}
+            <li>
+                <a>
+                    {{ shoe.name }}
+                </a>
+                <p>{{ shoe.price }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

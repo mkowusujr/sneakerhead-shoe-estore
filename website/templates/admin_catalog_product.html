@@ -6,11 +6,13 @@
     <h1>Shoe Details</h1>
     <p>{{ shoe.name }}</p>
     <p>{{ shoe.brand }}</p>
+    <p>{{ shoe.audience }}</p>
     <p>{{ shoe.price }}</p>
     <form id="put-form" action="/inventory/{{ shoe.id }}" method="POST">
-            <input type="text" name="name" placeholder="{{ shoe.name }}" required>
-            <input type="text" name="brand" placeholder="{{ shoe.brand }}" required>
-            <input type="number" name="price" placeholder="{{ shoe.price }}" required>
+            <input type="text" name="name" value="{{ shoe.name }}">
+            <input type="text" name="brand" value="{{ shoe.brand }}">
+            <input type="text" name="audience" value="{{ shoe.audience }}">
+            <input type="number" name="price" value="{{ shoe.price }}">
             <button type="submit">update item</button>
     </form>
     <div id="colors">

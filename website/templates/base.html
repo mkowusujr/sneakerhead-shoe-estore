@@ -7,9 +7,28 @@
     <script type="text/javascript" src="../static/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="../static/http-methods.js"></script>
+    <link rel="stylesheet" href="../static/style.css">
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    {% block body %}{% endblock %}
+    <div class="nav-bar">
+       <ul>
+           <li><a href="{{ url_for('cust_catalog_views.releases_page') }}">New Releases</a></li>
+           <li><a href="{{ url_for('cust_catalog_views.mens_releases_page') }}">Mens</a></li>
+           <li><a href="{{ url_for('cust_catalog_views.womens_releases_page') }}">Womens</a></li>
+           <li><a href="{{ url_for('cust_catalog_views.kids_releases_page') }}">Kids</a></li>
+
+           <li style="float:right"><a>Join Us</a></li>
+           <li style="float:right"><a>Sign In</a></li>
+       </ul> 
+    </div>
+
+    <div class="content">
+        {% block body %}{% endblock %}
+    </div>
+
+    <footer>
+        <p>Author: Mathew Owusu Jr</p>
+    </footer>
 </body>
 </html>

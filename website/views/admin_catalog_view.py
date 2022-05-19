@@ -1,6 +1,6 @@
 import re
 from select import select
-from flask import Blueprint, Response, render_template, redirect, request, json, jsonify
+from flask import Blueprint, Response, render_template, redirect, request
 from ..models import Color, Quantity_Per_Size, ReservedShoe, Shoe, Cart
 admin_catalog_view = Blueprint('admin_catalog_view', __name__)
 from .. import db
@@ -15,6 +15,7 @@ def add_to_inventory():
     new_shoe = Shoe(
         name = request.form['name'],
         brand = request.form['brand'],
+        audience = request.form['audience'],
         price = request.form['price']
     )
 
@@ -79,6 +80,7 @@ def update_product(id):
     updated_shoe = Shoe.query.get_or_404(id)
     updated_shoe.name = data['name']
     updated_shoe.brand = data['brand']
+    updated_shoe.audience = data['audience']
     updated_shoe.price = data['price']
     db.session.commit()
     return Response("/inventory", 200)

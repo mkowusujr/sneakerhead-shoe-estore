@@ -24,6 +24,7 @@ $(function sendPutRequest(){
     });
 });
 
+
 /**
  * helper function that uses jquery ajax to send a delete request to the server
  * @param {*} requestUrl the request url being sent to the server

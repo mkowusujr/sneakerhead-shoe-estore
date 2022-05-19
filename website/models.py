@@ -54,6 +54,7 @@ class Shoe(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(length=30), nullable=False)
     brand = db.Column(db.String(length=30), nullable=False)
+    audience = db.Column(db.String(length=30), nullable=False)
     price = db.Column(db.Float(), nullable=False)
 
     # one to many relationship, one shoe many colors
