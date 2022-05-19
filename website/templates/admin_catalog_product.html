@@ -13,8 +13,13 @@
         <p>{{ color.color }}</p>
         {% for quantity in color.quan_per_size%}
             <h3>Quantity of shoes per each size</h3>
-            <p>{{ quantity.size }}</p>
-            <p>{{ quantity.quantity }}</p>
+            <form id="put-form" action="/inventory/{{shoe.id}}/{{color.id}}/{{quantity.id}}" method="POST">
+                <p>{{ quantity.size }}</p>
+                <!-- <input type="number" name="size" value="{{quantity.size}}"> -->
+                <input type="number" name="quantity" value="{{quantity.quantity}}">
+                <input type="submit" value="edit quantity">
+            </form>
+            <!-- <p>{{ quantity.quantity }}</p> --> 
         {% endfor %}
     {% endfor %}
 {% endblock%}
