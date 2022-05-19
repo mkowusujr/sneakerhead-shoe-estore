@@ -26,6 +26,7 @@
                 <input type="number" name="quantity" min= "0" value="{{quantity.quantity}}">
                 <input type="submit" value="edit quantity">
             </form>
+            <button onclick="sendDeleteRequest('/inventory/{{shoe.id}}/{{color.id}}/{{quantity.id}}')">remove size</button>
         {% endfor %}
     {% endfor %}
 {% endblock%}

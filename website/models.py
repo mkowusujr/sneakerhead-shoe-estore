@@ -74,7 +74,7 @@ class Color(db.Model):
     color = db.Column(db.String(length=30))
     
     # one to many relationship, one color many quantity per sizes
-    quan_per_size = db.relationship("Quantity_Per_Size", back_populates="color", lazy=True)
+    quan_per_size = db.relationship("Quantity_Per_Size", back_populates="color", lazy=True, cascade='delete-orphan')
     
     # Many colors belonging to one shoe
     shoe_id = db.Column(db.Integer(), db.ForeignKey('shoe.id'))

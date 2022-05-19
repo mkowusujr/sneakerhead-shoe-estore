@@ -34,7 +34,6 @@ def display_shoe(id):
 
 @admin_catalog_view.route('/inventory/<int:id>', methods=['PUT'])
 def update_product(id):
-    # data1 = request.get_data()
     data = request.get_json()
     updated_shoe = Shoe.query.get_or_404(id)
     updated_shoe.name = data['name']
@@ -66,7 +65,14 @@ def update_product_color_quantity(shoe_id, color_id, quan_id):
 
 @admin_catalog_view.route('/inventory/<int:id>', methods=['Delete'])
 def remove_from_inventory(id):
-    shoe = Shoe.query.filter_by(id=id).first_or_404()
+    shoe = Shoe.query.get_or_404(id)
     db.session.delete(shoe)
     db.session.commit()
     return Response("/inventory", 200)
+
+@admin_catalog_view.route('/inventory/<int:shoe_id>/<int:color_id>/<int:quan_id>', methods=['DELETE'])
+def delete_product_color_quantity(shoe_id, color_id, quan_id):
+    quan = Quantity_Per_Size.query.get_or_404(quan_id)
+    db.session.delete(quan)
+    db.session.commit()
+    return Response("/inventory/" + str(shoe_id), 200)
