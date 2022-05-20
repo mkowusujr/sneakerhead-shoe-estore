@@ -1,7 +1,5 @@
-import re
-from select import select
 from flask import Blueprint, Response, render_template, redirect, request
-from ..models import Color, Quantity_Per_Size, ReservedShoe, Shoe, Cart
+from ..models import Color, Quantity_Per_Size, Shoe
 admin_catalog_view = Blueprint('admin_catalog_view', __name__)
 from .. import db
 from types import SimpleNamespace
@@ -116,7 +114,7 @@ def delete_from_inventory(id):
     shoe = Shoe.query.get_or_404(id)
     db.session.delete(shoe)
     db.session.commit()
-    return Response("/inventory" + str(id), 200)
+    return Response("/inventory", 200)
 
 
 @admin_catalog_view.route('/inventory/<int:shoe_id>/<int:color_id>', methods=['DELETE'])
