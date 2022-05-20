@@ -14,5 +14,6 @@ def home_page():
     for shoe in shoes:
         if not brands.__contains__(shoe.brand):
             brands.append(shoe.brand)
-
+    brands.sort()
+    
     return render_template("home.html", recently_added=recently_added, brands=brands)
