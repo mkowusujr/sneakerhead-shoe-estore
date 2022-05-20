@@ -60,7 +60,7 @@ class Shoe(db.Model):
     # one to many relationship, one shoe many colors
     # if a color is deleted all its children are too, if one of its
     #children is delete it will be gone from color's list of children
-    colors = db.relationship("Color", back_populates="shoe", lazy=True, cascade='delete-orphan') 
+    colors = db.relationship("Color", back_populates="shoe", lazy=True, cascade='all, delete, delete-orphan') 
     
     @classmethod
     def from_json(cls, json_string):
