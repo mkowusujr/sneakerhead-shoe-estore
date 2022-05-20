@@ -1,4 +1,24 @@
 /**
+ * helper function to send a search query to the server
+ */
+$(function sendSearchQuery(){
+    $("form[id=search]").submit(function(e) {
+        e.preventDefault();
+        const data = new FormData(e.target);
+        const dataObj = Object.fromEntries(data.entries());
+        var requestUrl = $(this).attr('action') + dataObj.search;
+        $.ajax({
+            url: requestUrl,
+            type: 'GET',
+            success: function(result){
+                window.location.href = requestUrl
+            }
+        });
+    });
+});
+
+
+/**
  * helper function for sending put request. Get all the forms of this id and 
  * overrides their submit events
  */
@@ -7,8 +27,8 @@ $(function sendPutRequest(){
         $(this).submit(function(e) {
             e.preventDefault();
             const data = new FormData(e.target);
-            const value = Object.fromEntries(data.entries());
-            var jsonForm = JSON.stringify(value);
+            const dataObj = Object.fromEntries(data.entries());
+            var jsonForm = JSON.stringify(dataObj);
             var requestUrl = $(this).attr('action');
             $.ajax({
                 url: requestUrl,
