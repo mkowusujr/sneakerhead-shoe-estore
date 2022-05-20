@@ -3,16 +3,18 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block body%}
-<div class="collections">
-    <ul>
-        {% for shoe in collection%}
-            <li>
-                <a style="color: #581e98">
-                    {{ shoe.name }}
-                </a>
-                <p>${{ shoe.price }}</p>
-            </li>
-        {% endfor %}
-    </ul>
-</div>
+    <h1>{{ title }}</h1>
+
+    <div class="collections">
+        <ul>
+            {% for shoe in collection%}
+                <li>
+                    <a style="color: #581e98">
+                        {{ shoe.name }}
+                    </a>
+                    <p>${{ shoe.price }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

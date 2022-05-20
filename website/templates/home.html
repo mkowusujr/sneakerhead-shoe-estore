@@ -15,12 +15,25 @@
         <ul>
             {% for shoe in recently_added %}
                 <li onclick="redirectUrl('/inventory/{{ shoe.id }}')">
-                    <!-- <p>{{ shoe.id  }}</p> -->
                     <a style="color: #581e98">{{ shoe.name  }}</a>
                     <p>${{ shoe.price  }}</p>
                 </li>
             {% endfor %}
         </ul>
+    </div>
+
+    <div class="collections brand-collection">
+        <h2>Shop our Brands</h2>
+        <ul>
+            {% for brand in brands %}
+                <li onclick="redirectUrl('/{{brand}}/releases')">
+                    <a>
+                        {{brand}}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+        
     </div>
     <!-- Shop Men, Women, Children -->
     <!-- <ul>
