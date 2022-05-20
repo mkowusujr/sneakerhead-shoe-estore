@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="../static/main.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='http-methods.js') }}"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -22,7 +22,7 @@
             <li>
                 <a>
                     <form id="search" action="/releases/browse/" method="GET">
-                        <input type="search" name="search" placeholder="search sneaker headz catalog">
+                        <input type="search" name="search" placeholder="Search">
                     </form>
                 </a>
             </li>

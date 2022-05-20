@@ -37,6 +37,18 @@ h1, h2 {
     padding-bottom: 0.5em;
 }
 
+input[type=search] {
+    box-sizing: border-box;         /* Opera/IE 8+ */
+    border-radius: 0.2em;
+    box-sizing: border-box;
+    padding-left: 1em;
+    padding-right: 0.5em;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    width: auto;
+    height: 1.1em !important;
+} 
+
 
 .nav-bar {
     background-color: #101935;
