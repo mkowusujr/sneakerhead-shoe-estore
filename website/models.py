@@ -1,20 +1,28 @@
 from flask_sqlalchemy import SQLAlchemy
-import json
+from flask_login import UserMixin
 from . import db
-# from flask_login import UserMixin
 
 
-class Customer(db.Model):
+class Customer(db.Model, UserMixin):
     __tablename__ = 'customer'
     id = db.Column(db.Integer(), primary_key=True)
-    # displayname = db.Column()
-    # email = db.Column()
-    # cartid = db.Column()
+    firstname = db.Column(db.Text())
+    lastname = db.Column(db.Text())
+    email = db.Column(db.Text())
+    username = db.Column(db.Text())
+    password_hash = db.Column(db.Text())
+
+    # one customer has one cart
+    cart = db.relationship('Cart', back_populates="owner", uselist=False)
 
 
 class Cart(db.Model):
     __tablename__ = 'cart'
     id = db.Column(db.Integer(), primary_key=True)
+
+    # one cart as one owner
+    owner_id = db.Column(db.Integer(), db.ForeignKey('customer.id'))
+    owner = db.relationship('Customer', back_populates='cart')
 
     # one to many relationship, one cart with many shoes
     shoes = db.relationship("ReservedShoe", back_populates="cart", lazy=True)

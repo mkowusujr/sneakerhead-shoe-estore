@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block body %}
+    <div>
+        <h2 style="font-size: xx-large">BECOME A SNEAKER HEADZ MEMBER</h2>
+            <form class="content" action="{{url_for('acct_mgmt_views.signup')}}" method="POST">
+                <input class="signup" name="firstname" type="text" placeholder="First Name" required>
+                <input class="signup" name="lastname" type="text" placeholder="Last Name" required>
+                <input class="signup" name="email" type="email" placeholder="Email" required>
+                <!-- {% with message = get_flashed_messages(with_categories=email) %}
+                    {% if category == 'email' %}
+                        {{ message }}
+                    {% endif %}
+                {% endwith%} -->
+
+                <input class="signup" name="username" type="text" placeholder="Username" required>
+                <!-- {% with message = get_flashed_messages(with_categories=true) %}
+                    {% if message and category == 'username' %}
+                        {{ message }}
+                    {% endif %}
+                {% endwith%} -->
+
+                <input class="signup" name="password_1" type="password" placeholder="Password" required>
+                <input class="signup" name="password_2" type="password" placeholder="Retype Password" required>
+                <!-- {% with message = get_flashed_messages(with_categories=password) %}
+                    {% if category == 'password' %}
+                        {{ message }}
+                    {% endif %}
+                {% endwith%} -->
+
+                <input type="submit" value="Sign Up">
+            </form> 
+    </div>
+{% endblock %}
