@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, redirect, request, flash, url_for
+from flask_login import login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from ..models import Customer
 from .. import db
@@ -8,6 +9,10 @@ acct_mgmt_views = Blueprint('acct_mgmt_views', __name__)
 @acct_mgmt_views.route('/signup', methods=["GET"])
 def display_signup_page():
     return render_template('signup.html')
+
+@acct_mgmt_views.route('/login', methods=["GET"])
+def display_login_page():
+    return render_template('login.html')
 
 @acct_mgmt_views.route('/signup', methods=["POST"])
 def signup():
@@ -30,4 +35,5 @@ def signup():
         )
         db.session.add(new_customer)
         db.session.commit()
+        # login_user(new_customer, remember=True)
         return redirect(url_for('home_view.home_page'))

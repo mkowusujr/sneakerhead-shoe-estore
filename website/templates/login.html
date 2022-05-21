@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign In{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <h2 style="font-size: xx-large">SIGN INTO YOUR SNEAKER HEADZ ACCOUNT</h2>
+            <form class="content" action="{{url_for('acct_mgmt_views.signup')}}" method="POST">
+                <input class="signup" name="email" type="email" placeholder="Email" required>
+
+                <input class="signup" name="password" type="password" placeholder="Password" required>
+
+                <input type="submit" value="Sign In">
+            </form> 
+</div>
+{% endblock %}
