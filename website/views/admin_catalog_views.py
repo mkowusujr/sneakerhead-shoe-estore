@@ -1,14 +1,18 @@
 from flask import Blueprint, Response, render_template, redirect, request
-from flask_login import current_user
+from flask_login import current_user, login_required
 from ..models import Color, Quantity_Per_Size, Shoe
-admin_catalog_view = Blueprint('admin_catalog_view', __name__)
+admin_catalog_views = Blueprint('admin_catalog_views', __name__)
 from .. import db
 
+@admin_catalog_views.before_request
+@login_required
+def admin_only():
+    pass
 
 """
 POST METHODS
 """ 
-@admin_catalog_view.route('/inventory', methods=['POST'])
+@admin_catalog_views.route('/inventory', methods=['POST'])
 def add_to_inventory():
     new_shoe = Shoe(
         name = request.form['name'],
@@ -22,7 +26,7 @@ def add_to_inventory():
 
     return redirect('/inventory')
 
-@admin_catalog_view.route('/inventory/<int:shoe_id>', methods=['POST'])
+@admin_catalog_views.route('/inventory/<int:shoe_id>', methods=['POST'])
 def add_product_color(shoe_id):
     color = Color(
         color = request.form['color']
@@ -38,7 +42,7 @@ def add_product_color(shoe_id):
     return redirect("/inventory/" + str(shoe_id))
 
 
-@admin_catalog_view.route('/inventory/<int:shoe_id>/<int:color_id>', methods=['POST'])
+@admin_catalog_views.route('/inventory/<int:shoe_id>/<int:color_id>', methods=['POST'])
 def add_product_color_quantity(shoe_id, color_id):
     quan = Quantity_Per_Size(
         size = request.form['size'],
@@ -57,13 +61,13 @@ def add_product_color_quantity(shoe_id, color_id):
 """
 GET METHODS
 """
-@admin_catalog_view.route('/inventory', methods=['GET'])
+@admin_catalog_views.route('/inventory', methods=['GET'])
 def display_inventory():
     inventory = Shoe.query.all()
     return render_template('admin_catalog.html', current_user=current_user, inventory=inventory)
   
 
-@admin_catalog_view.route('/inventory/<int:id>', methods=['GET'])
+@admin_catalog_views.route('/inventory/<int:id>', methods=['GET'])
 def display_shoe(id):
     shoe = Shoe.query.get_or_404(id)
     return render_template('admin_catalog_product.html', current_user=current_user, shoe=shoe)
@@ -72,7 +76,7 @@ def display_shoe(id):
 """
 UPDATE METHODS
 """
-@admin_catalog_view.route('/inventory/<int:id>', methods=['PUT'])
+@admin_catalog_views.route('/inventory/<int:id>', methods=['PUT'])
 def update_product(id):
     data = request.get_json()
     updated_shoe = Shoe.query.get_or_404(id)
@@ -84,7 +88,7 @@ def update_product(id):
     return Response("/inventory", 200)
 
 
-@admin_catalog_view.route('/inventory/<int:shoe_id>/<int:color_id>', methods=['PUT'])
+@admin_catalog_views.route('/inventory/<int:shoe_id>/<int:color_id>', methods=['PUT'])
 def update_product_color(shoe_id, color_id):
     data = request.get_json()
     color = Color.query.get_or_404(color_id)
@@ -95,7 +99,7 @@ def update_product_color(shoe_id, color_id):
     return Response("/inventory/" + str(shoe_id), 200)
 
 
-@admin_catalog_view.route('/inventory/<int:shoe_id>/<int:color_id>/<int:quan_id>', methods=['PUT'])
+@admin_catalog_views.route('/inventory/<int:shoe_id>/<int:color_id>/<int:quan_id>', methods=['PUT'])
 def update_product_color_quantity(shoe_id, color_id, quan_id):
     data = request.get_json()
     quan = Quantity_Per_Size.query.get_or_404(quan_id)
@@ -109,7 +113,7 @@ def update_product_color_quantity(shoe_id, color_id, quan_id):
 """
 DELETE METHODS
 """
-@admin_catalog_view.route('/inventory/<int:id>', methods=['Delete'])
+@admin_catalog_views.route('/inventory/<int:id>', methods=['Delete'])
 def delete_from_inventory(id):
     shoe = Shoe.query.get_or_404(id)
     db.session.delete(shoe)
@@ -117,14 +121,14 @@ def delete_from_inventory(id):
     return Response("/inventory", 200)
 
 
-@admin_catalog_view.route('/inventory/<int:shoe_id>/<int:color_id>', methods=['DELETE'])
+@admin_catalog_views.route('/inventory/<int:shoe_id>/<int:color_id>', methods=['DELETE'])
 def delete_product_color(shoe_id, color_id):
     color = Color.query.get_or_404(color_id)
     db.session.delete(color)
     db.session.commit()
     return Response("/inventory/" + str(shoe_id), 200)
 
-@admin_catalog_view.route('/inventory/<int:shoe_id>/<int:color_id>/<int:quan_id>', methods=['DELETE'])
+@admin_catalog_views.route('/inventory/<int:shoe_id>/<int:color_id>/<int:quan_id>', methods=['DELETE'])
 def delete_product_color_quantity(shoe_id, color_id, quan_id):
     quan = Quantity_Per_Size.query.get_or_404(quan_id)
     db.session.delete(quan)

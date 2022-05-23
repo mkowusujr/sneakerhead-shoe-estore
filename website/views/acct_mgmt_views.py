@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, redirect, request, flash, url_for
 from flask_login import login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
-from ..models import Customer
+from ..models import Customer, Cart
 from .. import db
 
 acct_mgmt_views = Blueprint('acct_mgmt_views', __name__)
@@ -30,6 +30,13 @@ def signup():
             password_hash = generate_password_hash(request.form['password_1'], method='sha256')
         )
         db.session.add(new_customer)
+        # db.session.commit()
+        user_cart = Cart()
+        db.session.add(user_cart)
+
+        new_customer.cart = user_cart
+        db.session.add(new_customer)
+
         db.session.commit()
         login_user(new_customer, remember=True)
         return redirect(url_for('home_view.home_page'))

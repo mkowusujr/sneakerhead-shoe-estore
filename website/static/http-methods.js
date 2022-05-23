@@ -17,6 +17,19 @@ $(function sendSearchQuery(){
     });
 });
 
+function sendPostRequest(requestUrl, itemID){
+    alert(itemID)
+    var itemJson = JSON.stringify(itemID);
+    alert(itemJson)
+    $.ajax({
+        url: requestUrl,
+        type: 'POST',
+        contentType: "application/json",
+        data: itemJson,
+        success: function(redirectUrl){
+        }
+    });
+}
 
 /**
  * helper function for sending put request. Get all the forms of this id and 

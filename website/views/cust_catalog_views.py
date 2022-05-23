@@ -44,3 +44,8 @@ def search_any_product(searchQuery):
     collection.extend(similar_brands)
     # collection.ppend()
     return render_template('catalog.html', title=title, collection=collection)
+
+@cust_catalog_views.route('/product/<int:id>', methods=['GET'])
+def display_product(id):
+    shoe = Shoe.query.get_or_404(id)
+    return render_template('cust_catalog_product.html', current_user=current_user, shoe=shoe)

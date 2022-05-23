@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}{{shoe.name}}{% endblock %}
+
+{% block body %}
+    <h1>Shoe Details</h1>
+    <p>{{ shoe.name }}</p>
+    <p>{{ shoe.brand }}</p>
+    <p>{{ shoe.audience }}</p>
+    <p>{{ shoe.price }}</p>
+    <form>
+        
+    </form>
+    <button onclick="sendPostRequest('{{url_for('cust_cart_views.add_to_cart')}}', {{shoe.id}})">
+        Add To Cart
+    </button>
+{% endblock%}
+

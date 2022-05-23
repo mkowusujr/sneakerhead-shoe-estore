@@ -8,7 +8,7 @@
     <div class="collections">
         <ul>
             {% for shoe in collection%}
-                <li>
+                <li onclick=" redirectUrl('{{url_for('cust_catalog_views.display_product', id=shoe.id)}}') ">
                     <a style="color: #581e98">
                         {{ shoe.name }}
                     </a>

@@ -29,7 +29,7 @@
             {% if current_user.is_authenticated %}
                 <div style="float:right">
                     <li>
-                        <a href="{{url_for('cust_cart_view.display_cart_page')}}">Cart</a>
+                        <a href="{{url_for('cust_cart_views.display_cart_page')}}">Cart</a>
                     </li>
                     <li>
                         <a href="{{ url_for( 'acct_mgmt_views.display_account_page', username=current_user.username ) }}">Hello {{current_user.firstname}}</a>
