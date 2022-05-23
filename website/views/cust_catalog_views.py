@@ -1,5 +1,5 @@
-from select import select
 from flask import Blueprint, render_template, redirect
+from flask_login import current_user
 from ..models import ReservedShoe, Shoe, Cart
 cust_catalog_views = Blueprint('cust_catalog_views', __name__)
 from .. import db
@@ -8,7 +8,7 @@ from .. import db
 def releases_page():
     title = "New Releases"
     collection = Shoe.query.all()
-    return render_template('catalog.html', title=title, collection=collection)
+    return render_template('catalog.html', current_user=current_user, title=title, collection=collection)
 
 @cust_catalog_views.route('/mens/releases', methods=['GET'])
 def mens_releases_page():
@@ -20,19 +20,19 @@ def mens_releases_page():
 def womens_releases_page():
     title = "New Releases"
     collection = Shoe.query.filter_by(audience="Womens")
-    return render_template('catalog.html', title=title, collection=collection)
+    return render_template('catalog.html', title=title, current_user=current_user, collection=collection)
 
 @cust_catalog_views.route('/kids/releases', methods=['GET'])
 def kids_releases_page():
     title = "New Releases"
     collection = Shoe.query.filter_by(audience="Kids")
-    return render_template('catalog.html', title=title, collection=collection)
+    return render_template('catalog.html', title=title, current_user=current_user, collection=collection)
 
 @cust_catalog_views.route('/<string:brand>/releases', methods=['GET'])
 def brand_releases_page(brand):
     title = brand + " New Releases"
     collection = Shoe.query.filter_by(brand=brand)
-    return render_template('catalog.html', title=title, collection=collection)
+    return render_template('catalog.html', title=title, current_user=current_user, collection=collection)
 
 @cust_catalog_views.route('/releases/browse/<string:searchQuery>')
 def search_any_product(searchQuery):

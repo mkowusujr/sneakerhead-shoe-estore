@@ -1,8 +1,8 @@
 from flask import Blueprint, Response, render_template, redirect, request
+from flask_login import current_user
 from ..models import Color, Quantity_Per_Size, Shoe
 admin_catalog_view = Blueprint('admin_catalog_view', __name__)
 from .. import db
-from types import SimpleNamespace
 
 
 """
@@ -60,13 +60,13 @@ GET METHODS
 @admin_catalog_view.route('/inventory', methods=['GET'])
 def display_inventory():
     inventory = Shoe.query.all()
-    return render_template('admin_catalog.html', inventory=inventory)
+    return render_template('admin_catalog.html', current_user=current_user, inventory=inventory)
   
 
-@admin_catalog_view.route('/inventory/<int:id>')
+@admin_catalog_view.route('/inventory/<int:id>', methods=['GET'])
 def display_shoe(id):
     shoe = Shoe.query.get_or_404(id)
-    return render_template('admin_catalog_product.html', shoe=shoe)
+    return render_template('admin_catalog_product.html', current_user=current_user, shoe=shoe)
 
 
 """
