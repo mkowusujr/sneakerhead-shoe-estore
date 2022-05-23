@@ -1,8 +1,11 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager, login_manager
 from os import path
 
 db = SQLAlchemy()
+login_manager = LoginManager()
+
 from .models import Customer, Cart, ReservedShoe, Shoe
 from .views.acct_mgmt_views import acct_mgmt_views
 from .views.admin_catalog_view import admin_catalog_view
@@ -20,6 +23,13 @@ def create_app():
     db.init_app(app)
     create_database(app)
 
+    # login manager
+    login_manager = LoginManager()
+    login_manager.login_view = 'acct_mgmt_views.display_login_page'
+    login_manager.init_app(app)
+    @login_manager.user_loader 
+    def load_user(id):
+        return Customer.query.get(int(id))
     # load blueprints
     app.register_blueprint(acct_mgmt_views, url_prefix='/')
     app.register_blueprint(admin_catalog_view, url_prefix='/')
@@ -31,3 +41,4 @@ def create_app():
 def create_database(app):
     if not path.exists('website/' + DB_NAME):
         db.create_all(app=app)
+
