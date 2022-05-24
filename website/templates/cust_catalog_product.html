@@ -10,10 +10,12 @@
     <p>{{ shoe.price }}</p>
     <form id="add-to-cart-form" action="{{url_for('cust_cart_views.add_to_cart')}}" method="POST">
         <input type="hidden" name="shoe_id" value="{{shoe.id}}">
-        <select name="quantity" required>
+        <select id="selectQty" name="quantity" required>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
         </select>
         <input type="submit" value="Add to Cart">
     </form>

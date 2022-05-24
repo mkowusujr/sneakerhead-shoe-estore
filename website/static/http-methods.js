@@ -18,6 +18,11 @@ $(function sendSearchQuery(){
 });
 
 
+/**
+ * 
+ * @param {*} requestUrl 
+ * @param {*} requestType 
+ */
 function modCartQty(requestUrl, requestType){
     $.ajax({
         url: requestUrl,
