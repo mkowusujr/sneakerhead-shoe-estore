@@ -18,9 +18,14 @@
                     <button onclick="modCartQty('{{url_for('cust_cart_views.quick_add', id=shoe.id)}}', 'POST')">
                         +
                     </button>
-                    <button onclick="modCartQty('{{url_for('cust_cart_views.quick_add', id=shoe.id)}}', 'DELETE')">
+                    <button onclick="modCartQty('{{url_for('cust_cart_views.quick_remove', id=shoe.id)}}', 'DELETE')">
                         -
                     </button>
+                </td>
+                <td>
+                    <a onclick="sendDeleteRequest('{{url_for('cust_cart_views.remove_from_cart', id=shoe.id)}}')">
+                        remove from cart
+                    </a>
                 </td>
             </tr>
         {% endfor %}

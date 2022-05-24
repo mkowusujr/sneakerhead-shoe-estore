@@ -47,13 +47,20 @@ def quick_add(id):
     shoe.quantity += 1
     db.session.commit()
     return Response(url_for('cust_cart_views.display_cart_page'), 200)
-    
+
 
 @cust_cart_views.route('/cart/<int:id>', methods=['DELETE'])
-def quick_remvove(id):
+def quick_remove(id):
     shoe = ReservedShoe.query.get_or_404(id)
     shoe.quantity -= 1
     if shoe.quantity == 0:
         db.session.delete(shoe)
+    db.session.commit()
+    return Response(url_for('cust_cart_views.display_cart_page'), 200)
+
+@cust_cart_views.route('/cart/remove/<int:id>', methods=['DELETE'])
+def remove_from_cart(id):
+    shoe = ReservedShoe.query.get_or_404(id)
+    db.session.delete(shoe)
     db.session.commit()
     return Response(url_for('cust_cart_views.display_cart_page'), 200)
