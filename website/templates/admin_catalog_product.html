@@ -11,7 +11,14 @@
     <form id="put-form" action="/inventory/{{ shoe.id }}" method="POST">
             <input type="text" name="name" value="{{ shoe.name }}">
             <input type="text" name="brand" value="{{ shoe.brand }}">
-            <input type="text" name="audience" value="{{ shoe.audience }}">
+            <!-- <input type="text" name="audience" value="{{ shoe.audience }}"> -->
+            <select name="audience" >
+                <option value="{{ shoe.audience }}">{{ shoe.audience }}</option>
+                <option value="Men">Men</option>
+                <option value="Women">Women</option>
+                <option value="Children">Children</option>
+            </select>
+
             <input type="number" name="price" value="{{ shoe.price }}">
             <button type="submit">update item</button>
     </form>

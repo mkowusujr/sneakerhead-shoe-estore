@@ -78,7 +78,8 @@ input[type="search"] {
 
 input[type="text"], 
 input[type="email"], 
-input[type="password"] {
+input[type="password"], 
+input[type="number"], select{
     border: 0.75px solid #dadada;
     border-radius: 0.2em;
     padding: 8px;
@@ -89,7 +90,8 @@ input[type="password"] {
 
 input[type="text"]:focus, 
 input[type="email"]:focus, 
-input[type="password"]:focus {
+input[type="password"]:focus, 
+input[type="number"]:focus {
     transition-timing-function: ease-out;
     transition-duration: 0.05s;
     outline: 3px solid #1c2c5a;

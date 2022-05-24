@@ -12,10 +12,14 @@
     <form action="/inventory" method="POST">
         <input type="text" name="name" placeholder="name" required>
         <input type="text" name="brand" placeholder="brand" required>
-        <input type="text" name="audience" placeholder="audience" required>
-        <!-- <input type="text" name="color" placeholder="color" required> -->
-        <!-- <input type="number" name="size" placeholder="size" required> -->
-        <!-- <input type="number" name="quantity" placeholder="quantity" required> -->
+        
+        <select name="audience" required>
+            <option value="">select audience</option>
+            <option value="Men">Men</option>
+            <option value="Women">Women</option>
+            <option value="Children">Children</option>
+        </select>
+
         <input type="number" name="price" placeholder="price" required>
         <input type="submit" value="add to inventory">
     </form>
@@ -36,19 +40,15 @@
                     <td>{{ shoe.id }}</td>
                     <td>
                         <p>{{ shoe.name }}</p>
-                        <!-- <input type="text" name="name" placeholder="{{ shoe.name }}" required> -->
                     </td>
                     <td>
                         <p>{{ shoe.brand }}</p>
-                        <!-- <input type="text" name="brand" placeholder="{{ shoe.brand }}" required> -->
                     </td>
                     <td>
                         <p>{{ shoe.price }}</p>
-                        <!-- <input type="number" name="price" placeholder="{{ shoe.price }}" required> -->
                     </td>
                     <td>
                         <button onclick="redirectUrl('/inventory/{{shoe.id}}')">edit shoe</button>
-                        <!-- <button type="submit">update item</button> -->
                     </td>
                 </form>
                 <td>

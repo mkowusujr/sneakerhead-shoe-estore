@@ -19,13 +19,13 @@ def mens_releases_page():
 @cust_catalog_views.route('/womens/releases', methods=['GET'])
 def womens_releases_page():
     title = "New Releases"
-    collection = Shoe.query.filter_by(audience="Womens")
+    collection = Shoe.query.filter_by(audience="Women")
     return render_template('catalog.html', title=title, current_user=current_user, collection=collection)
 
 @cust_catalog_views.route('/kids/releases', methods=['GET'])
 def kids_releases_page():
     title = "New Releases"
-    collection = Shoe.query.filter_by(audience="Kids")
+    collection = Shoe.query.filter_by(audience="Children")
     return render_template('catalog.html', title=title, current_user=current_user, collection=collection)
 
 @cust_catalog_views.route('/<string:brand>/releases', methods=['GET'])
