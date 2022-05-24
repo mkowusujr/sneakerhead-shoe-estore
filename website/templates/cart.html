@@ -15,10 +15,12 @@
                 <td>${{shoe.reserved_shoe.price}}</td>
                 <td>
                     Qty: {{shoe.quantity}}
-                    <button onclick="quickAddToCart('{{url_for('cust_cart_views.quick_add', id=shoe.id)}}')">
+                    <button onclick="modCartQty('{{url_for('cust_cart_views.quick_add', id=shoe.id)}}', 'POST')">
                         +
                     </button>
-                    <button>-</button>
+                    <button onclick="modCartQty('{{url_for('cust_cart_views.quick_add', id=shoe.id)}}', 'DELETE')">
+                        -
+                    </button>
                 </td>
             </tr>
         {% endfor %}

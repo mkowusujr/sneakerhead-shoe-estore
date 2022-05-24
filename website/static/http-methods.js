@@ -18,10 +18,10 @@ $(function sendSearchQuery(){
 });
 
 
-function quickAddToCart(requestUrl){
+function modCartQty(requestUrl, requestType){
     $.ajax({
         url: requestUrl,
-        type: 'POST',
+        type: requestType,
         success: function(redirectUrl){
             window.location.href = redirectUrl
         }
