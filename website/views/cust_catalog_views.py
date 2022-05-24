@@ -49,3 +49,4 @@ def search_any_product(searchQuery):
 def display_product(id):
     shoe = Shoe.query.get_or_404(id)
     return render_template('cust_catalog_product.html', current_user=current_user, shoe=shoe)
+    

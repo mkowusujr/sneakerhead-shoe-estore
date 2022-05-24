@@ -19,24 +19,30 @@ def display_cart_page():
 
 @cust_cart_views.route('/cart', methods=['POST'])
 def add_to_cart():
-    id = int(request.get_json())
-    shoe = Shoe.query.get_or_404(id)
+    id = int(request.form['shoe_id'])
+    quantity = int(request.form['quantity'])
 
-    shoe_is_in_cart = False
-    for shoe_in_cart in current_user.cart.shoes:
-        if shoe_in_cart.shoe_id == shoe.id:
-            shoe_is_in_cart = True
-            shoe_in_cart.quantity += 1
+    user_cart = current_user.cart
+    shoe_in_cart = ReservedShoe.query.filter_by(cartid=user_cart.id, shoe_id=id).first()
 
-    if not shoe_is_in_cart:
+    if shoe_in_cart:
+        shoe_in_cart.quantity += quantity
+        db.session.commit()
+    else:
         added_shoe = ReservedShoe(
-            quantity = 1
+            quantity = quantity
         )
-        added_shoe.reserved_shoe = shoe
+        added_shoe.reserved_shoe = Shoe.query.get_or_404(id)
         db.session.add(added_shoe)
         current_user.cart.shoes.append(added_shoe)
         db.session.add(current_user)
 
         db.session.commit()
 
+    return redirect(url_for('cust_cart_views.display_cart_page'))
+
+@cust_cart_views.route('/cart/<int:id>', methods=['POST'])
+def quick_add():
+    shoe = ReservedShoe.query.get_or_404(id)
+    shoe.quantity += 1
     return redirect(url_for('cust_cart_views.display_cart_page'))

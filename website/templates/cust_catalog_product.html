@@ -8,11 +8,17 @@
     <p>{{ shoe.brand }}</p>
     <p>{{ shoe.audience }}</p>
     <p>{{ shoe.price }}</p>
-    <form>
-        
+    <form id="add-to-cart-form" action="{{url_for('cust_cart_views.add_to_cart')}}" method="POST">
+        <input type="hidden" name="shoe_id" value="{{shoe.id}}">
+        <select name="quantity" required><!--form="add-to-cart-form"-->
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <input type="submit" value="Add to Cart">
     </form>
-    <button onclick="sendPostRequest('{{url_for('cust_cart_views.add_to_cart')}}', {{shoe.id}})">
+    <!-- <button onclick="sendPostRequest('{{url_for('cust_cart_views.add_to_cart')}}', {{shoe.id}})">
         Add To Cart
-    </button>
+    </button> -->
 {% endblock%}
 

@@ -4,12 +4,21 @@
 
 {% block body %}
     <h1>Shopping Cart</h1>
-    <ul>
+    <table>
         {% for shoe in cart%}
-            <li>
-                <a>{{shoe.reserved_shoe.name}}</a>
-                <p>{{shoe.quantity}}</p>
-            </li>
+            <tr>
+                <td>
+                    <a href="{{url_for('cust_catalog_views.display_product', id=shoe.reserved_shoe.id)}}">
+                        {{shoe.reserved_shoe.name}}
+                    </a>
+                </td>
+                <td>${{shoe.reserved_shoe.price}}</td>
+                <td>
+                    Qty: {{shoe.quantity}}
+                    <button>+</button>
+                    <button>-</button>
+                </td>
+            </tr>
         {% endfor %}
-    </ul>
+    </table>
 {% endblock %}

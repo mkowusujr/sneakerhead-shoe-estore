@@ -7,14 +7,12 @@
 
 
 {% block body %}
-    <!-- <h1>Welcome to the Homepage</h1> -->
-
     <!-- Recently Added Shoes -->
     <div class="collections">
         <h2>New Shoe Arrivals</h2>
         <ul>
             {% for shoe in recently_added %}
-                <li onclick="redirectUrl('/inventory/{{ shoe.id }}')">
+                <li onclick="redirectUrl('{{url_for('cust_catalog_views.display_product', id=shoe.id)}}')">
                     <a style="color: #581e98">{{ shoe.name  }}</a>
                     <p>${{ shoe.price  }}</p>
                 </li>
@@ -26,19 +24,12 @@
         <h2>Shop our Brands</h2>
         <ul>
             {% for brand in brands %}
-                <li onclick="redirectUrl('/{{brand}}/releases')">
+                <li onclick="redirectUrl('{{url_for('cust_catalog_views.brand_releases_page', brand=brand)}}')">
                     <a>
                         {{brand}}
                     </a>
                 </li>
             {% endfor %}
         </ul>
-        
     </div>
-    <!-- Shop Men, Women, Children -->
-    <!-- <ul>
-        {% for audience in audiences %}
-            
-        {% endfor %}
-    </ul> -->
 {% endblock %}
