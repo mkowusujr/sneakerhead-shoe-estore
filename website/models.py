@@ -37,7 +37,7 @@ class ReservedShoe(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
 
     # one to one relationship, one reserved shoe 'collection' inside one cart
-    cartid = db.Column(db.Integer(), db.ForeignKey('cart.id'))
+    cart_id = db.Column(db.Integer(), db.ForeignKey('cart.id'))
     # allows you to access the entire cart that is linked to this reserved shoe
     cart = db.relationship('Cart', back_populates='shoes')
 
@@ -51,8 +51,8 @@ class ReservedShoe(db.Model):
     quantity = db.Column(db.Integer(), nullable=False)
 
     def __repr__(self):
-        return """<ReservedShoe {}, cartid={}, 
-        cart={}, shoeid={}, reserved_shoe={}, quan={}>""".format(self.id, self.cartid, self.cart,
+        return """<ReservedShoe {}, cart_id={}, 
+        cart={}, shoeid={}, reserved_shoe={}, quan={}>""".format(self.id, self.cart_id, self.cart,
                                                                         self.shoe_id, self.reserved_shoe, self.quantity)
 
 

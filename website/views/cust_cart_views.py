@@ -27,7 +27,7 @@ def add_to_cart():
     quantity = int(request.form['quantity'])
 
     user_cart = current_user.cart
-    shoe_in_cart = ReservedShoe.query.filter_by(cartid=user_cart.id, shoe_id=id).first()
+    shoe_in_cart = ReservedShoe.query.filter_by(cart_id=user_cart.id, shoe_id=id).first()
 
     if shoe_in_cart:
         shoe_in_cart.quantity += quantity
