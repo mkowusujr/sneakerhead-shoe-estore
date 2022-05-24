@@ -5,6 +5,9 @@ This project was created with
 - jQuery to send asynchronous HTTP (Ajax) requests to the webserver
 - javascript to manipulate the DOM
 
+### The Database Design
+![database](shoe_estore_db_diagram.png)
+
 ## How to Install and Run
 First Clone the Repo and cd into it
 `gitclone https://github.com/mkowusujr/sneakerhead-shoe-estore.git`
