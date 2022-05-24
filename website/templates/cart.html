@@ -15,7 +15,9 @@
                 <td>${{shoe.reserved_shoe.price}}</td>
                 <td>
                     Qty: {{shoe.quantity}}
-                    <button>+</button>
+                    <button onclick="quickAddToCart('{{url_for('cust_cart_views.quick_add', id=shoe.id)}}')">
+                        +
+                    </button>
                     <button>-</button>
                 </td>
             </tr>

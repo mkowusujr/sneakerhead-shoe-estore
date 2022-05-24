@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, request, url_for
+from flask import Blueprint, Response, render_template, redirect, request, url_for
 from flask_login import login_required, current_user
 from ..models import ReservedShoe, Shoe, Cart
 cust_cart_views = Blueprint('cust_cart_views', __name__)
@@ -42,7 +42,9 @@ def add_to_cart():
     return redirect(url_for('cust_cart_views.display_cart_page'))
 
 @cust_cart_views.route('/cart/<int:id>', methods=['POST'])
-def quick_add():
+def quick_add(id):
     shoe = ReservedShoe.query.get_or_404(id)
     shoe.quantity += 1
-    return redirect(url_for('cust_cart_views.display_cart_page'))
+    db.session.commit()
+    return Response(url_for('cust_cart_views.display_cart_page'), 200)
+    # return redirect(url_for('cust_cart_views.display_cart_page'))
