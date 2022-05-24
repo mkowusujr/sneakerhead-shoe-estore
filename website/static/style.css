@@ -38,6 +38,32 @@ h1, h2 {
     padding-bottom: 0.5em;
 }
 
+table {
+    background-color: #b95c50;
+    border: 1px solid;
+    border-radius: 0.25em;
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-bottom: 2em;
+    padding: 0.5em;
+    width: 85%;
+    box-shadow: 2px 2px 2px rgb(49, 49, 49);
+}
+
+th, td {
+    border: 1px solid;
+    padding: 0.25em;
+}
+
+th {
+    background-color: #e8b4b8;
+}
+
+td {
+    background-color: #eed6d3;
+    padding-left: 1em;
+}
+
 input[type="search"] {
     box-sizing: border-box;        
     border-radius: 0.2em;
