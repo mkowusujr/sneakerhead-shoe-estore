@@ -1,8 +1,7 @@
-from flask import Blueprint, render_template, redirect, url_for
+from flask import Blueprint, render_template
 from flask_login import current_user
-from ..models import ReservedShoe, Shoe, Cart
+from ..models import Shoe
 home_view = Blueprint('home_view', __name__)
-from .. import db
 
 @home_view.route('/')
 @home_view.route('/home')
