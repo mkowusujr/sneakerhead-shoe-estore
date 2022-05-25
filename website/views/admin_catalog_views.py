@@ -1,4 +1,4 @@
-from flask import Blueprint, Response, render_template, redirect, request
+from flask import Blueprint, Response, render_template, redirect, url_for, request
 from flask_login import current_user, login_required
 from ..models import Color, Quantity_Per_Size, Shoe
 admin_catalog_views = Blueprint('admin_catalog_views', __name__)
@@ -24,7 +24,7 @@ def add_to_inventory():
     db.session.add(new_shoe)
     db.session.commit()
 
-    return redirect('/inventory')
+    return redirect(url_for('admin_catalog_views.display_inventory'))
 
 @admin_catalog_views.route('/inventory/<int:shoe_id>', methods=['POST'])
 def add_product_color(shoe_id):
@@ -39,7 +39,7 @@ def add_product_color(shoe_id):
     db.session.add(shoe)
     db.session.commit()
 
-    return redirect("/inventory/" + str(shoe_id))
+    return redirect(url_for('admin_catalog_views.display_shoe', id=shoe_id))
 
 
 @admin_catalog_views.route('/inventory/<int:shoe_id>/<int:color_id>', methods=['POST'])
@@ -55,7 +55,7 @@ def add_product_color_quantity(shoe_id, color_id):
     color.quan_per_size.append(quan)
     db.session.add(color)
     db.session.commit()
-    return redirect("/inventory/" + str(shoe_id))
+    return redirect(url_for('admin_catalog_views.display_shoe', id=shoe_id))
 
 
 """
@@ -64,13 +64,13 @@ GET METHODS
 @admin_catalog_views.route('/inventory', methods=['GET'])
 def display_inventory():
     inventory = Shoe.query.all()
-    return render_template('admin_catalog.html', current_user=current_user, inventory=inventory)
+    return render_template('admin_catalog/catalog.html', current_user=current_user, inventory=inventory)
   
 
 @admin_catalog_views.route('/inventory/<int:id>', methods=['GET'])
 def display_shoe(id):
     shoe = Shoe.query.get_or_404(id)
-    return render_template('admin_catalog_product.html', current_user=current_user, shoe=shoe)
+    return render_template('admin_catalog/product.html', current_user=current_user, shoe=shoe)
 
 
 """
@@ -85,7 +85,7 @@ def update_product(id):
     updated_shoe.audience = data['audience']
     updated_shoe.price = data['price']
     db.session.commit()
-    return Response("/inventory", 200)
+    return Response(url_for('admin_catalog_views.display_inventory'), 200)
 
 
 @admin_catalog_views.route('/inventory/<int:shoe_id>/<int:color_id>', methods=['PUT'])
@@ -96,7 +96,7 @@ def update_product_color(shoe_id, color_id):
     db.session.add(color)
     db.session.commit()
     print(data)
-    return Response("/inventory/" + str(shoe_id), 200)
+    return Response(url_for('admin_catalog_views.display_shoe', id=shoe_id), 200)
 
 
 @admin_catalog_views.route('/inventory/<int:shoe_id>/<int:color_id>/<int:quan_id>', methods=['PUT'])
@@ -107,7 +107,7 @@ def update_product_color_quantity(shoe_id, color_id, quan_id):
     db.session.add(quan)
     db.session.commit()
     print(data)
-    return Response("/inventory/" + str(shoe_id), 200)
+    return Response(url_for('admin_catalog_views.display_shoe', id=shoe_id), 200)
 
 
 """
@@ -118,7 +118,7 @@ def delete_from_inventory(id):
     shoe = Shoe.query.get_or_404(id)
     db.session.delete(shoe)
     db.session.commit()
-    return Response("/inventory", 200)
+    return Response(url_for('admin_catalog_views.display_inventory'), 200)
 
 
 @admin_catalog_views.route('/inventory/<int:shoe_id>/<int:color_id>', methods=['DELETE'])
@@ -126,11 +126,11 @@ def delete_product_color(shoe_id, color_id):
     color = Color.query.get_or_404(color_id)
     db.session.delete(color)
     db.session.commit()
-    return Response("/inventory/" + str(shoe_id), 200)
+    return Response(url_for('admin_catalog_views.display_shoe', id=shoe_id), 200)
 
 @admin_catalog_views.route('/inventory/<int:shoe_id>/<int:color_id>/<int:quan_id>', methods=['DELETE'])
 def delete_product_color_quantity(shoe_id, color_id, quan_id):
     quan = Quantity_Per_Size.query.get_or_404(quan_id)
     db.session.delete(quan)
     db.session.commit()
-    return Response("/inventory/" + str(shoe_id), 200)
+    return Response(url_for('admin_catalog_views.display_shoe', id=shoe_id), 200)
