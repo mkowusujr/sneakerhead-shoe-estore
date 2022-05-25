@@ -4,6 +4,7 @@ This project was created with
 - sqlite database managed with [flask_sqlalchemy](URL 'https://flask-sqlalchemy.palletsprojects.com/en/2.x/')
 - jQuery to send asynchronous HTTP (Ajax) requests to the webserver
 - javascript to manipulate the DOM
+- sass to make managing the css across the site more efficent
 
 ### The Database Design
 ![database](shoe_estore_db_diagram.png)
