@@ -7,13 +7,12 @@
 
 
 {% block body %}
-    <!-- Recently Added Shoes -->
-    <div class="collections">
+    <div class="new-arrivals">
         <h2>New Shoe Arrivals</h2>
         <ul>
             {% for shoe in recently_added %}
-                <li onclick="redirectUrl('{{url_for('cust_catalog_views.display_product', id=shoe.id)}}')">
-                    <a style="color: #581e98">{{ shoe.name  }}</a>
+                <li class="item-card" onclick="redirectUrl('{{url_for('cust_catalog_views.display_product', id=shoe.id)}}')">
+                    <a>{{ shoe.name  }}</a>
                     <p>${{ shoe.price  }}</p>
                 </li>
             {% endfor %}
@@ -24,7 +23,7 @@
         <h2>Shop our Brands</h2>
         <ul>
             {% for brand in brands %}
-                <li onclick="redirectUrl('{{url_for('cust_catalog_views.brand_releases_page', brand=brand)}}')">
+                <li class="brand-item-card" onclick="redirectUrl('{{url_for('cust_catalog_views.brand_releases_page', brand=brand)}}')">
                     <a>
                         {{brand}}
                     </a>

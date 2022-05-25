@@ -1,0 +1,23 @@
+table {
+    background-color: $tableColor;
+    border: 1px solid;
+    border-radius: 0.25em;
+    margin: 2em;
+    padding: 0.5em;
+    width: 85%;
+    box-shadow: 2px 2px 2px $shadow;
+}
+
+th, td {
+    border: 1px solid;
+    padding: 0.25em;
+}
+
+th {
+    background-color: $thColor;
+}
+
+td {
+    background-color: $tdColor;
+    padding-left: 1em;
+}

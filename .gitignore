@@ -7139,3 +7139,4 @@ venv/Lib/site-packages/six-1.16.0.dist-info/RECORD
 venv/Lib/site-packages/six-1.16.0.dist-info/top_level.txt
 venv/Lib/site-packages/six-1.16.0.dist-info/WHEEL
 venv/Scripts/f2py.exe
+website/templates/starter_template.html

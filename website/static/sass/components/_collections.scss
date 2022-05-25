@@ -1,0 +1,9 @@
+.collections {
+    @include centerContent();
+    width: 100%;
+    padding-bottom: 5em;
+    ul {
+        display: grid;
+        grid-template-columns: auto auto auto;
+    }
+}

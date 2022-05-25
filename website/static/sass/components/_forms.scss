@@ -1,0 +1,20 @@
+input[type="text"], 
+input[type="email"], 
+input[type="password"], 
+input[type="number"], select{
+    border: 0.75px solid $borderOutline;
+    border-radius: 0.2em;
+    padding: 8px;
+    margin: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+input[type="text"]:focus, 
+input[type="email"]:focus, 
+input[type="password"]:focus, 
+input[type="number"]:focus {
+    transition-timing-function: ease-out;
+    transition-duration: 0.05s;
+    outline: 3px solid $navItemHovered;
+}
