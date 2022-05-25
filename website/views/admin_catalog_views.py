@@ -64,13 +64,13 @@ GET METHODS
 @admin_catalog_views.route('/inventory', methods=['GET'])
 def display_inventory():
     inventory = Shoe.query.all()
-    return render_template('admin_catalog/catalog.html', current_user=current_user, inventory=inventory)
+    return render_template('admin/catalog.html', current_user=current_user, inventory=inventory)
   
 
 @admin_catalog_views.route('/inventory/<int:id>', methods=['GET'])
 def display_shoe(id):
     shoe = Shoe.query.get_or_404(id)
-    return render_template('admin_catalog/product.html', current_user=current_user, shoe=shoe)
+    return render_template('admin/product.html', current_user=current_user, shoe=shoe)
 
 
 """
