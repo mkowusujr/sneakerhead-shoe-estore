@@ -8,7 +8,7 @@
     <div class="collections">
         <ul>
             {% for shoe in collection.items%}
-                <li class="item-card" onclick=" redirectUrl('{{url_for('cust_catalog_views.display_product', id=shoe.id)}}') ">
+                <li class="brand-item-card" onclick=" redirectUrl('{{url_for('cust_catalog_views.display_product', id=shoe.id)}}') ">
                     <a>
                         {{ shoe.name }}
                     </a>
@@ -18,10 +18,29 @@
         </ul>
     </div>
     <!-- Pagination Links-->
-    <a href="{{ url_for('cust_catalog_views.releases_page', page=collection.prev_num) }}">
-        &laquo;
-    </a>
-    <a href="{{ url_for('cust_catalog_views.releases_page', page=collection.next_num) }}">
-        &raquo;
-    </a>
+    <div class="pagination">
+        <a href="{{ url_for('cust_catalog_views.releases_page', page=collection.prev_num) }}">
+            &laquo;
+        </a>
+        {% for page_num in collection.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+        {% if page_num %}
+            <!-- Check for the active page and set the link to "Active"-->
+            {% if collection.page == page_num %}
+            <a href="{{ url_for('cust_catalog_views.releases_page', page=page_num) }}">
+                {{ page_num }}
+            </a>
+            {% else %}
+            <a href="{{ url_for('cust_catalog_views.releases_page', page=page_num) }}">
+                {{ page_num }}
+            </a>
+            {% endif %}
+        {% else %}
+            ...
+        {% endif %}
+        {% endfor %}
+        <a href="{{ url_for('cust_catalog_views.releases_page', page=collection.next_num) }}">
+            &raquo;
+        </a>
+    </div>
+    
 {% endblock %}

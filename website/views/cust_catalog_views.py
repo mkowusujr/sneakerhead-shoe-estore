@@ -8,8 +8,8 @@ cust_catalog_views = Blueprint('cust_catalog_views', __name__)
 def releases_page():
     title = "New Releases"
     page = request.args.get('page', 1, type=int)
-    ROWS_PER_PAGE = 10
-    collection = Shoe.query.paginate(page=page, per_page=ROWS_PER_PAGE)
+    PER_PAGE = 36
+    collection = Shoe.query.paginate(page=page, per_page=PER_PAGE)
     return render_template('customer/catalog.html', current_user=current_user, title=title, collection=collection)
 
 
