@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 from flask_login import current_user
 from ..models import Shoe
 cust_catalog_views = Blueprint('cust_catalog_views', __name__)
@@ -7,7 +7,9 @@ cust_catalog_views = Blueprint('cust_catalog_views', __name__)
 @cust_catalog_views.route('/releases', methods=['GET'])
 def releases_page():
     title = "New Releases"
-    collection = Shoe.query.all()
+    page = request.args.get('page', 1, type=int)
+    ROWS_PER_PAGE = 10
+    collection = Shoe.query.paginate(page=page, per_page=ROWS_PER_PAGE)
     return render_template('customer/catalog.html', current_user=current_user, title=title, collection=collection)
 
 
