@@ -1,0 +1,11 @@
+body {
+    background-color: $bodyColor;
+    @include centerContent();
+}
+
+.content {
+    background-color: $contentColor;
+    width: 100%;
+    padding: 2em;
+    @include centerContent();
+}
