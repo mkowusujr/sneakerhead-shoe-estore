@@ -13,7 +13,7 @@
         <ul>
             {% for shoe in recently_added %}
                 <li onclick="redirectUrl('{{url_for('cust_catalog_views.display_product', id=shoe.id)}}')">
-                    <a style="color: #581e98">{{ shoe.name  }}</a>
+                    <a>{{ shoe.name  }}</a>
                     <p>${{ shoe.price  }}</p>
                 </li>
             {% endfor %}

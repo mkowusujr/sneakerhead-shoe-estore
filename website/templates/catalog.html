@@ -6,10 +6,10 @@
     <h1>{{ title }}</h1>
 
     <div class="collections">
-        <ul style="display: grid; grid-template-columns: auto auto auto;">
+        <ul>
             {% for shoe in collection%}
                 <li onclick=" redirectUrl('{{url_for('cust_catalog_views.display_product', id=shoe.id)}}') ">
-                    <a style="color: #581e98">
+                    <a>
                         {{ shoe.name }}
                     </a>
                     <p>${{ shoe.price }}</p>
