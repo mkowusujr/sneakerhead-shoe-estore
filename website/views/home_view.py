@@ -15,5 +15,5 @@ def home_page():
         if not brands.__contains__(shoe.brand):
             brands.append(shoe.brand)
     brands.sort()
-    currb=current_user
-    return render_template("home.html", current_user=current_user, recently_added=recently_added, brands=brands)
+    
+    return render_template("index.html", current_user=current_user, recently_added=recently_added, brands=brands)
