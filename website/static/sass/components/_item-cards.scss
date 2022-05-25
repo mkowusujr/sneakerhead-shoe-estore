@@ -10,3 +10,9 @@
         background-color: $itemHovered;
     }
 }
+
+.brand-item-card {
+    @extend .item-card;
+    padding: 84px 86px;
+    border-radius: 0.15em;
+}
