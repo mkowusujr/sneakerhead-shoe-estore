@@ -1,0 +1,12 @@
+.item-card {
+    display: block;
+    background-color: $item;
+    border-radius: 0.35em;
+    text-align: center;
+    font-size: large;
+    padding: 14px 16px;
+    margin: 0.75em;
+    &:hover, &:active {
+        background-color: $itemHovered;
+    }
+}

@@ -3,6 +3,15 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+h1, h2 {
+  font-size: xx-large;
+  padding-bottom: 0.5em;
+}
+
+a {
+  text-decoration: none;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -67,4 +76,64 @@ footer {
   color: white;
   text-align: center;
   font-size: small;
+}
+
+.new-arrivals {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 2em;
+}
+.new-arrivals ul {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+}
+
+.collections {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 5em;
+}
+.collections ul {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+table {
+  background-color: #b95c50;
+  border: 1px solid;
+  border-radius: 0.25em;
+  margin: 2em;
+  padding: 0.5em;
+  width: 85%;
+  box-shadow: 2px 2px 2px rgb(49, 49, 49);
+}
+
+th, td {
+  border: 1px solid;
+  padding: 0.25em;
+}
+
+th {
+  background-color: #e8b4b8;
+}
+
+td {
+  background-color: #eed6d3;
+  padding-left: 1em;
+}
+
+.item-card {
+  display: block;
+  background-color: #DBCBD8;
+  border-radius: 0.35em;
+  text-align: center;
+  font-size: large;
+  padding: 14px 16px;
+  margin: 0.75em;
+}
+.item-card:hover, .item-card:active {
+  background-color: #d1a4ca;
 }/*# sourceMappingURL=main.css.map */

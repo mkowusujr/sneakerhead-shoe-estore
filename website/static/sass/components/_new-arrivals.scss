@@ -1,3 +1,8 @@
 .new-arrivals {
-    
+    @include centerContent();
+    padding-bottom: 2em;
+    ul {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+    }
 }
