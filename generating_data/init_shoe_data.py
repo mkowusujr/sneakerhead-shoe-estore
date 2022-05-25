@@ -1,9 +1,7 @@
 import pandas as pd
 import sqlalchemy as db
 from sqlalchemy.orm import sessionmaker
-from website.models import Shoe
-from website.views.cust_catalog_views import brand_releases_page
-
+from ..website.models import Shoe
 # setup db
 engine = db.create_engine('sqlite:///website/sneakerhead.db')
 # connection = engine.connect()
