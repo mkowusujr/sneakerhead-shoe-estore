@@ -29,27 +29,25 @@
                 </a>
             </li>
             
+            <div class="nav-block">
             {% if current_user.is_authenticated %}
-                <div>
-                    <li>
-                        <a href="{{url_for('cust_cart_views.display_cart_page')}}">Cart</a>
-                    </li>
-                    <li>
-                        <a href="{{ url_for( 'acct_mgmt_views.display_account_page', username=current_user.username ) }}">Hello {{current_user.firstname}}</a>
-                    </li>
-                    <li>
-                        <a href="{{url_for('acct_mgmt_views.logout')}}"">Sign Out</a>
-                    </li>
-                </div>
+                <li>
+                    <a href="{{url_for('cust_cart_views.display_cart_page')}}">Cart</a>
+                </li>
+                <li>
+                    <a href="{{ url_for( 'acct_mgmt_views.display_account_page', username=current_user.username ) }}">Hello {{current_user.firstname}}</a>
+                </li>
+                <li>
+                    <a href="{{url_for('acct_mgmt_views.logout')}}"">Sign Out</a>
+                </li>
             {% else %}
-                <div>
-                    <li>
-                        <a href="{{url_for('acct_mgmt_views.display_signup_page')}}">Join Us</a>
-                    </li>
-                    <li>
-                        <a href="{{url_for('acct_mgmt_views.display_login_page')}}"">Sign In</a>
-                    </li>
-                </div>
+                <li>
+                    <a href="{{url_for('acct_mgmt_views.display_signup_page')}}">Join Us</a>
+                </li>
+                <li>
+                    <a href="{{url_for('acct_mgmt_views.display_login_page')}}"">Sign In</a>
+                </li>
+            </div>
                 
             {% endif %}
         </ul> 

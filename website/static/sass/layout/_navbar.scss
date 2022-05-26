@@ -24,8 +24,11 @@
         }
     }
     input[type="search"] {  
-        border-radius: 0.2em;
-        padding: 1px 16px;
+        border-radius: 0.25em;
+        padding: 0px 16px;
         width: 100%;
+    }
+    .nav-block {
+        justify-self: end;
     }
 }

@@ -65,9 +65,12 @@ body {
   background-color: #1c2c5a;
 }
 .nav-bar input[type=search] {
-  border-radius: 0.2em;
-  padding: 1px 16px;
+  border-radius: 0.25em;
+  padding: 0px 16px;
   width: 100%;
+}
+.nav-bar .nav-block {
+  justify-self: end;
 }
 
 footer {
@@ -174,10 +177,10 @@ td {
   width: auto;
   padding-top: 1em;
   padding-bottom: 1em;
-  border-top-left-radius: 1em;
-  border-bottom-left-radius: 1em;
-  border-top-right-radius: 1em;
-  border-bottom-right-radius: 1em;
+  border-top-left-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 .pagination a {
@@ -188,12 +191,12 @@ td {
   border-color: rgb(49, 49, 49);
 }
 .pagination a:first-child {
-  border-top-left-radius: 1em;
-  border-bottom-left-radius: 1em;
+  border-top-left-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
 }
 .pagination a:last-child {
-  border-top-right-radius: 1em;
-  border-bottom-right-radius: 1em;
+  border-top-right-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
 }
 .pagination a:hover {
   background-color: #aca1d1;
