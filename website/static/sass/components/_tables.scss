@@ -5,7 +5,7 @@ table {
     margin: 2em;
     padding: 0.5em;
     width: 85%;
-    box-shadow: 2px 2px 2px $shadow;
+    @include dropShadow();
 }
 
 th, td {

@@ -38,7 +38,7 @@
         {% endif %}
 
         <a href="{{ url_for_prev }}">
-            &laquo;
+            &laquo; Previous
         </a>
         <!-- Loop through the number of pages to display a link for each-->
         {% for page_num in collection.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=3) %}
@@ -63,7 +63,7 @@
                     </a>
                 {% endif %}
             {% else %}
-                ...
+                <span>...</span>
             {% endif %}
         {% endfor %}
 
@@ -76,7 +76,7 @@
         {% endif %}
 
         <a href="{{ url_for_next }}">
-            &raquo;
+            Next &raquo;
         </a>
     </div>
     {% endif %}

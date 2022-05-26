@@ -3,3 +3,17 @@
     flex-direction: column;
     align-items: center;
 }
+
+@mixin dropShadow() {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+@mixin paginateLeft() {
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+}
+
+@mixin paginateRight() {
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+}

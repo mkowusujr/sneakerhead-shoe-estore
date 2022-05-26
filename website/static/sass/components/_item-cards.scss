@@ -6,6 +6,7 @@
     font-size: large;
     padding: 14px 16px;
     margin: 0.75em;
+    @include dropShadow();
     &:hover, &:active {
         background-color: $itemHovered;
     }
