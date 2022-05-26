@@ -1,0 +1,43 @@
+.login {
+    @include centerContent();
+    background-color: white;
+    border: solid;
+    border-color: $borderOutline;
+    border-radius: 0.5em;;
+    padding: 1.5em;
+
+    h2 {
+        font-size: x-large;
+        align-self: flex-start;
+    }
+    form {
+        background-color: white;
+        padding: 0 !important;
+    }
+
+    input[type="submit"] {
+        background-color: $loginButtonColor;
+        border: 1px solid $borderOutline;
+        border-radius: 0.25em;
+        margin: 1em;
+        padding: 8px;
+        padding-left: 1em;
+        padding-right: 1em;
+        width: 88%;
+        &:hover {
+            background-color: $loginButtonHover;
+        }
+    }
+}
+
+.login-pg-p {
+    margin-top: 1em;
+    color: grey;
+}
+
+.login-pg-sign-btn {
+    margin: 1em;
+    padding: 8px;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
