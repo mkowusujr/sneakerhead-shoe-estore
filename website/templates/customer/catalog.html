@@ -17,30 +17,67 @@
             {% endfor %}
         </ul>
     </div>
+
     <!-- Pagination Links-->
+    <!-- Credit for pagination solution: https://betterprogramming.pub/simple-flask-pagination-example-4190b12c2e2e -->
+    <!-- Setting url for href -->
+
+    {% set url_for_prev = '' %}
+    {% set url_for_curr = '' %}
+    {% set url_for_next = '' %}
+    
+    {% if collection.pages > 1 %}
     <div class="pagination">
-        <a href="{{ url_for('cust_catalog_views.releases_page', page=collection.prev_num) }}">
+
+        {% if brand %}
+            {% set url_for_prev = url_for(routeUrl, brand=brand, page=collection.prev_num) %}
+        {% elif searchQuery %}
+            {% set url_for_prev = url_for(routeUrl,searchQuery=searchQuery, page=collection.prev_num) %}
+        {% else %}
+            {% set url_for_prev = url_for(routeUrl, page=collection.prev_num) %}
+        {% endif %}
+
+        <a href="{{ url_for_prev }}">
             &laquo;
         </a>
-        {% for page_num in collection.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
-        {% if page_num %}
-            <!-- Check for the active page and set the link to "Active"-->
-            {% if collection.page == page_num %}
-            <a href="{{ url_for('cust_catalog_views.releases_page', page=page_num) }}">
-                {{ page_num }}
-            </a>
+        <!-- Loop through the number of pages to display a link for each-->
+        {% for page_num in collection.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=3) %}
+            {% if page_num %}
+
+            {% if brand %}
+                {% set url_for_curr = url_for(routeUrl, brand=brand, page=page_num) %}
+            {% elif searchQuery %}
+                {% set url_for_curr = url_for(routeUrl,searchQuery=searchQuery, page=page_num) %}
             {% else %}
-            <a href="{{ url_for('cust_catalog_views.releases_page', page=page_num) }}">
-                {{ page_num }}
-            </a>
+                {% set url_for_curr = url_for(routeUrl, page=page_num) %}
             {% endif %}
-        {% else %}
-            ...
-        {% endif %}
+
+            <!-- Check for the active page and set the link to "Active"-->
+                {% if collection.page == page_num %}
+                    <a href="{{ url_for_curr }}">
+                        {{ page_num }}
+                    </a>
+                {% else %}
+                    <a href="{{ url_for_curr }}">
+                        {{ page_num }}
+                    </a>
+                {% endif %}
+            {% else %}
+                ...
+            {% endif %}
         {% endfor %}
-        <a href="{{ url_for('cust_catalog_views.releases_page', page=collection.next_num) }}">
+
+        {% if brand %}
+            {% set url_for_next = url_for(routeUrl, brand=brand, page=collection.next_num) %}
+        {% elif searchQuery %}
+            {% set url_for_next = url_for(routeUrl,searchQuery=searchQuery, page=collection.next_num) %}
+        {% else %}
+            {% set url_for_next = url_for(routeUrl, page=collection.next_num) %}
+        {% endif %}
+
+        <a href="{{ url_for_next }}">
             &raquo;
         </a>
     </div>
-    
+    {% endif %}
 {% endblock %}
