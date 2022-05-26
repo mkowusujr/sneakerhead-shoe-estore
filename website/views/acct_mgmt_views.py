@@ -9,7 +9,8 @@ acct_mgmt_views = Blueprint('acct_mgmt_views', __name__)
 
 @acct_mgmt_views.route('/signup', methods=["GET"])
 def display_signup_page():
-    return render_template('acct_mgmt/signup.html', current_user=current_user)
+    return render_template('acct_mgmt/signup.html', 
+    current_user=current_user)
 
 
 @acct_mgmt_views.route('/signup', methods=["POST"])
@@ -45,7 +46,8 @@ def signup():
 
 @acct_mgmt_views.route('/login', methods=["GET"])
 def display_login_page():
-    return render_template('acct_mgmt/login.html', current_user=current_user)
+    return render_template('acct_mgmt/login.html', 
+    current_user=current_user)
 
 
 @acct_mgmt_views.route('/login', methods=["POST"])
@@ -63,7 +65,8 @@ def login():
 @acct_mgmt_views.route('/<string:username>', methods=['GET'])
 @login_required
 def display_account_page(username):
-    return render_template('acct_mgmt/mg_acct.html', current_user=current_user)
+    return render_template('acct_mgmt/mg_acct.html', 
+    current_user=current_user)
 
 
 @acct_mgmt_views.route('/logout')

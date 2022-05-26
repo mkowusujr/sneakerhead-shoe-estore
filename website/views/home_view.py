@@ -30,4 +30,7 @@ def home_page():
     #         brands.append(shoe.brand)
     # brands.sort()
     
-    return render_template("index.html", current_user=current_user, recently_added=recently_added, brands=brands)
+    return render_template("index.html", 
+    current_user=current_user, 
+    recently_added=recently_added, 
+    brands=brands)

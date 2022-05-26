@@ -18,7 +18,10 @@ def display_cart_page():
     for shoe in cart:
         total_price += (shoe.quantity * shoe.reserved_shoe.price)
         
-    return render_template('acct_mgmt/cart.html', current_user=current_user, cart=cart, total_price=total_price)
+    return render_template('acct_mgmt/cart.html', 
+    current_user=current_user, 
+    cart=cart, 
+    total_price=total_price)
 
 
 @cust_cart_views.route('/cart', methods=['POST'])
