@@ -66,7 +66,7 @@ def kids_releases_page():
 def brand_releases_page(brand):
     title = brand + " New Releases"
     page = request.args.get('page', 1, type=int)
-    collection = Shoe.query.filter_by(brand=brand).paginate(page=page, per_page=PER_PAGE)
+    collection = Shoe.query.filter(Shoe.brand.like('%'+brand+'%')).paginate(page=page, per_page=PER_PAGE)
     routeUrl = 'cust_catalog_views.brand_releases_page'
 
     return render_template('customer/catalog.html', 

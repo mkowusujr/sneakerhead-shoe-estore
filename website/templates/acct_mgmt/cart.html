@@ -4,31 +4,36 @@
 
 {% block body %}
     <h1>Shopping Cart</h1>
-    <table>
-        {% for shoe in cart%}
-            <tr>
-                <td>
-                    <a href="{{url_for('cust_catalog_views.display_product', id=shoe.reserved_shoe.id)}}">
-                        {{shoe.reserved_shoe.name}}
-                    </a>
-                </td>
-                <td>${{shoe.reserved_shoe.price}}</td>
-                <td>
-                    Qty: {{shoe.quantity}}
-                    <button onclick="modCartQty('{{url_for('cust_cart_views.quick_add', id=shoe.id)}}', 'POST')">
-                        +
-                    </button>
-                    <button onclick="modCartQty('{{url_for('cust_cart_views.quick_remove', id=shoe.id)}}', 'DELETE')">
-                        -
-                    </button>
-                </td>
-                <td>
-                    <a onclick="sendDeleteRequest('{{url_for('cust_cart_views.remove_from_cart', id=shoe.id)}}')">
-                        remove from cart
-                    </a>
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
-    <h3>Total Price: ${{ total_price }}</h3>
+    {% if cart | length > 0 %}
+        <table>
+            {% for shoe in cart%}
+                <tr>
+                    <td>
+                        <a href="{{url_for('cust_catalog_views.display_product', id=shoe.reserved_shoe.id)}}">
+                            {{shoe.reserved_shoe.name}}
+                        </a>
+                    </td>
+                    <td>${{shoe.reserved_shoe.price}}</td>
+                    <td>
+                        Qty: {{shoe.quantity}}
+                        <button onclick="modCartQty('{{url_for('cust_cart_views.quick_add', id=shoe.id)}}', 'POST')">
+                            +
+                        </button>
+                        <button onclick="modCartQty('{{url_for('cust_cart_views.quick_remove', id=shoe.id)}}', 'DELETE')">
+                            -
+                        </button>
+                    </td>
+                    <td>
+                        <a onclick="sendDeleteRequest('{{url_for('cust_cart_views.remove_from_cart', id=shoe.id)}}')">
+                            remove from cart
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <h3>Total Price: ${{ total_price }}</h3>
+    {% else %}
+        <p>Sad empty cart :(</p>
+        <p>go add some items into your cart to make it happy</p>
+    {% endif %}
 {% endblock %}

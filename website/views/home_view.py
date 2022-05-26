@@ -7,22 +7,24 @@ home_view = Blueprint('home_view', __name__)
 @home_view.route('/home')
 def home_page():
     recently_added = Shoe.query.order_by(Shoe.id.desc()).limit(5)
-    brands = ["aldo",
-    "converse",
-    "fila",
-    "lacoste",
-    "new balance",
-    "nike",
-    "Polo Ralph Lauren",
-    "puma",
-    "reebook",
-    "sketchers",
-    "steve madden",
-    "timberland",
-    "hilfiger",
-    "under armour",
-    "vans",
-    "addias"]
+    brands = [
+        "adidas",
+        "aldo",
+        "converse",
+        "fila",
+        "lacoste",
+        "new balance",
+        "nike",
+        "Polo Ralph Lauren",
+        "puma",
+        "reebook",
+        "sketchers",
+        "steve madden",
+        "timberland",
+        "hilfiger",
+        "under armour",
+        "vans"
+        ]
     # shoes = Shoe.query.all()
     # brands = []
     # for shoe in shoes:

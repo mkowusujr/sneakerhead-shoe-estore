@@ -4,7 +4,9 @@
 
 {% block body%}
     <h1>{{ title }}</h1>
-
+    {% if collection.items == [] %}
+        <p>Sorry, no results were found</p>
+    {% endif %}
     <div class="collections">
         <ul>
             {% for shoe in collection.items%}
