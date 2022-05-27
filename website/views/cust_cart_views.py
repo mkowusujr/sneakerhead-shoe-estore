@@ -32,10 +32,13 @@ def add_to_cart():
     size = float(request.form['size'])
 
     user_cart = current_user.cart
-    shoe_in_cart = ReservedShoe.query.filter_by(cart_id=user_cart.id, shoe_id=id).first()
+    shoe_in_cart = ReservedShoe.query.filter_by(
+        cart_id=user_cart.id, 
+        shoe_id=id,
+        color=color,
+        size=size).first()
 
-    if shoe_in_cart and shoe_in_cart.color==color and shoe_in_cart.size==size:
-        # and check if color or size combo exist
+    if shoe_in_cart: #and shoe_in_cart.color==color and shoe_in_cart.size==size:
         shoe_in_cart.quantity += quantity
         db.session.commit()
     else:
