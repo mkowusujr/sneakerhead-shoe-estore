@@ -38,7 +38,7 @@ def add_to_cart():
         color=color,
         size=size).first()
 
-    if shoe_in_cart: #and shoe_in_cart.color==color and shoe_in_cart.size==size:
+    if shoe_in_cart:
         shoe_in_cart.quantity += quantity
         db.session.commit()
     else:

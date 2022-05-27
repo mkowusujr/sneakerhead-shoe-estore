@@ -9,7 +9,6 @@ class Customer(db.Model, UserMixin):
     firstname = db.Column(db.Text())
     lastname = db.Column(db.Text())
     email = db.Column(db.Text())
-    username = db.Column(db.Text())
     password_hash = db.Column(db.Text())
 
     # one customer has one cart

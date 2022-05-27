@@ -18,9 +18,6 @@ def signup():
     if Customer.query.filter_by(email=request.form['email']).first():
         flash("Email is Taken", category="email")
         return redirect('/signup')
-    elif Customer.query.filter_by(username=request.form['username']).first():
-        flash("Email is Taken", category="username")
-        return redirect('/signup')
     elif request.form['password_1'] != request.form['password_2']:
         flash("Passwords do not match", category="password")
         return redirect('/signup')
@@ -29,7 +26,6 @@ def signup():
             firstname = request.form['firstname'],
             lastname = request.form['lastname'],
             email = request.form['email'],
-            username = request.form['username'],
             password_hash = generate_password_hash(request.form['password_1'], method='sha256')
         )
         db.session.add(new_customer)
@@ -62,9 +58,9 @@ def login():
     return redirect(url_for('acct_mgmt_views.login'))
 
 
-@acct_mgmt_views.route('/<string:username>', methods=['GET'])
+@acct_mgmt_views.route('/user/<int:user_id>', methods=['GET'])
 @login_required
-def display_account_page(username):
+def display_account_page(user_id):
     return render_template('acct_mgmt/mg_acct.html', 
     current_user=current_user)
 
