@@ -49,6 +49,8 @@ class ReservedShoe(db.Model):
 
     # number of this shoe in the cart
     quantity = db.Column(db.Integer(), nullable=False)
+    color = db.Column(db.String(length=30), nullable=False)
+    size = db.Column(db.Float(), nullable=False)
 
     def __repr__(self):
         return """<ReservedShoe {}, cart_id={}, 
