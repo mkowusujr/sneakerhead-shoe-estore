@@ -1,19 +1,13 @@
 .item-card {
     display: block;
     background-color: $item;
-    border-radius: 0.35em;
     text-align: center;
     font-size: large;
-    padding: 14px 16px;
+    padding: 84px 86px;
+    border-radius: 0.15em;
     margin: 0.75em;
     @include dropShadow();
     &:hover, &:active {
         background-color: $itemHovered;
     }
-}
-
-.brand-item-card {
-    @extend .item-card;
-    padding: 84px 86px;
-    border-radius: 0.15em;
 }

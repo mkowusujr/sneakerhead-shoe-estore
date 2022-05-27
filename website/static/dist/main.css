@@ -130,23 +130,18 @@ td {
   padding-left: 1em;
 }
 
-.item-card, .brand-item-card {
+.item-card {
   display: block;
   background-color: #DBCBD8;
-  border-radius: 0.35em;
   text-align: center;
   font-size: large;
-  padding: 14px 16px;
+  padding: 84px 86px;
+  border-radius: 0.15em;
   margin: 0.75em;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
-.item-card:hover, .brand-item-card:hover, .item-card:active, .brand-item-card:active {
+.item-card:hover, .item-card:active {
   background-color: #d1a4ca;
-}
-
-.brand-item-card {
-  padding: 84px 86px;
-  border-radius: 0.15em;
 }
 
 .collections, .brand-collections {

@@ -37,7 +37,9 @@ def add_to_cart():
         db.session.commit()
     else:
         added_shoe = ReservedShoe(
-            quantity = quantity
+            quantity = quantity,
+            color=request.form['color'],
+            size=request.form['size']
         )
         added_shoe.reserved_shoe = Shoe.query.get_or_404(id)
         db.session.add(added_shoe)
@@ -47,6 +49,7 @@ def add_to_cart():
         db.session.commit()
 
     return redirect(url_for('cust_cart_views.display_cart_page'))
+
 
 @cust_cart_views.route('/cart/<int:id>', methods=['POST'])
 def quick_add(id):
@@ -64,6 +67,7 @@ def quick_remove(id):
         db.session.delete(shoe)
     db.session.commit()
     return Response(url_for('cust_cart_views.display_cart_page'), 200)
+
 
 @cust_cart_views.route('/cart/remove/<int:id>', methods=['DELETE'])
 def remove_from_cart(id):

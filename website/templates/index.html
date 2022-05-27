@@ -23,7 +23,7 @@
         <h2>Shop Some of Our Brands</h2>
         <ul>
             {% for brand in brands %}
-                <li class="brand-item-card" onclick="redirectUrl('{{url_for('cust_catalog_views.brand_releases_page', brand=brand)}}')">
+                <li class="item-card" onclick="redirectUrl('{{url_for('cust_catalog_views.brand_releases_page', brand=brand)}}')">
                     <a>
                         {{brand}}
                     </a>
