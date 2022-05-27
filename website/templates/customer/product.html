@@ -3,20 +3,46 @@
 {% block title %}{{shoe.name}}{% endblock %}
 
 {% block body %}
-    <h1>Shoe Details</h1>
-    <p>{{ shoe.name }}</p>
-    <p>{{ shoe.brand }}</p>
-    <p>{{ shoe.audience }}</p>
-    <p>{{ shoe.price }}</p>
-    <form id="add-to-cart-form" action="{{url_for('cust_cart_views.add_to_cart')}}" method="POST">
-        <input type="hidden" name="shoe_id" value="{{shoe.id}}">
-        <select name="quantity" required>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-        <input type="submit" value="Add to Cart">
-    </form>
+    <div class="shoe-product">
+        <div>
+           <h1>{{ shoe.name }}</h1>
+            <p>{{ shoe.brand }} | {{ shoe.audience }}'s Shoe</p> 
+        </div>
+        
+        <p>${{ shoe.price }}</p>
+        <form id="add-to-cart-form" action="{{url_for('cust_cart_views.add_to_cart')}}" method="POST">
+            <input type="hidden" name="shoe_id" value="{{shoe.id}}">
+            <div>
+                <div>
+                    {% for color in shoe.colors%}
+                        {% if shoe.colors | length == 1 %}
+                            <input type="radio" name="color" id="{{color.color}}" value="{{color.color}}" checked="checked">
+                        {% elif loop.index == 1 %}
+                            <input type="radio" name="color" id="{{color.color}}" value="{{color.color}}" checked="checked">
+                        {% else %}
+                            <input type="radio" name="color" id="{{color.color}}" value="{{color.color}}">
+                        {% endif %}
+
+                        <label for="{{color.color}}">{{color.color}}</label>
+                    {% endfor %}
+                </div>
+            </div>
+            <div>
+                {% for size in range(60, 155, 5) %}
+                        <input type="radio" name="size" id="{{size/10}}" value="{{size/10}}" required>
+                        <label for="{{size/10}}">{{size/10}}</label>
+                {% endfor %} 
+            </div>
+            <div>
+                <select name="quantity" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <input type="submit" value="Add to Cart">
+            </div>
+        </form>
+    </div>  
 {% endblock%}

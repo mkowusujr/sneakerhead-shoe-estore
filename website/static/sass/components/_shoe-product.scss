@@ -1,0 +1,10 @@
+.shoe-product {
+    @extend .login;
+    @include dropShadow();
+    border: none;
+    border-color: none;
+
+    input[type="submit"] {
+        width:fit-content!important;
+    }
+}

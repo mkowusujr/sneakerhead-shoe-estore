@@ -11,9 +11,9 @@
         <ul>
             {% for shoe in collection.items%}
                 <li class="item-card" onclick=" redirectUrl('{{url_for('cust_catalog_views.display_product', id=shoe.id)}}') ">
-                    <a>
+                    <p>
                         {{ shoe.name }}
-                    </a>
+                    </p>
                     <p>Colors: {{shoe.colors | length }}</p>
                     <p>${{ shoe.price }}</p>
                 </li>
