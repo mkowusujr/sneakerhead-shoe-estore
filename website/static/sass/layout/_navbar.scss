@@ -1,4 +1,5 @@
 .nav-bar {
+    @include dropShadow();
     background-color: $navColor;
     width: 100%;
     overflow: hidden;
