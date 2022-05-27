@@ -6,14 +6,17 @@ from os import path
 db = SQLAlchemy()
 login_manager = LoginManager()
 
+
 from .models import Customer, Cart, ReservedShoe, Shoe
 from .views.acct_mgmt_views import acct_mgmt_views
 from .views.admin_catalog_views import admin_catalog_views
 from .views.cust_cart_views import cust_cart_views
 from .views.cust_catalog_views import cust_catalog_views
 from .views.home_view import home_view
+from . import init_shoe_data
 
 DB_NAME = 'sneakerhead.db'
+
 
 def create_app():
     app = Flask(__name__)
@@ -38,9 +41,12 @@ def create_app():
     app.register_blueprint(cust_catalog_views, url_prefix='/')
     app.register_blueprint(home_view, url_prefix='/')
     
+    # populate_db_with_shoes()
     return app
+
 
 def create_database(app):
     if not path.exists('website/' + DB_NAME):
         db.create_all(app=app)
-
+        init_shoe_data.populate_db_with_shoes()
+  
