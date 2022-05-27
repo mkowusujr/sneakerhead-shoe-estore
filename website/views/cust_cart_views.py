@@ -1,6 +1,6 @@
 from flask import Blueprint, Response, render_template, redirect, request, url_for
 from flask_login import login_required, current_user
-from ..models import ReservedShoe, Shoe, Cart
+from ..models import Quantity_Per_Size, ReservedShoe, Shoe, Cart, Color
 cust_cart_views = Blueprint('cust_cart_views', __name__)
 from .. import db
 
@@ -28,11 +28,14 @@ def display_cart_page():
 def add_to_cart():
     id = int(request.form['shoe_id'])
     quantity = int(request.form['quantity'])
+    color = (request.form['color'])
+    size = float(request.form['size'])
 
     user_cart = current_user.cart
     shoe_in_cart = ReservedShoe.query.filter_by(cart_id=user_cart.id, shoe_id=id).first()
 
-    if shoe_in_cart:
+    if shoe_in_cart and shoe_in_cart.color==color and shoe_in_cart.size==size:
+        # and check if color or size combo exist
         shoe_in_cart.quantity += quantity
         db.session.commit()
     else:
@@ -54,7 +57,10 @@ def add_to_cart():
 @cust_cart_views.route('/cart/<int:id>', methods=['POST'])
 def quick_add(id):
     shoe = ReservedShoe.query.get_or_404(id)
-    shoe.quantity += 1
+    color = Color.query.filter_by(shoe_id=shoe.shoe_id).first()
+    max_quantity = Quantity_Per_Size.query.filter_by(color_id=color.id, size=shoe.size).first()
+    if max_quantity.quantity >= (shoe.quantity + 1):
+        shoe.quantity += 1
     db.session.commit()
     return Response(url_for('cust_cart_views.display_cart_page'), 200)
 
