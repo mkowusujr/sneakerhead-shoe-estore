@@ -39,8 +39,14 @@ def add_to_cart():
         size=size).first()
 
     if shoe_in_cart:
-        shoe_in_cart.quantity += quantity
-        db.session.commit()
+        color = Color.query.filter_by(shoe_id=shoe_in_cart.shoe_id).first()
+        max_quantity = Quantity_Per_Size.query.filter_by(color_id=color.id, size=shoe_in_cart.size).first()
+        if max_quantity.quantity >= (shoe_in_cart.quantity + quantity):
+            shoe_in_cart.quantity += quantity
+            db.session.commit()
+        # else you exceeded the max quantity
+        else:
+            return ('', 204)
     else:
         added_shoe = ReservedShoe(
             quantity = quantity,
