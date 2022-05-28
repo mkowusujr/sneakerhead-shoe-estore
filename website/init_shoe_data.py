@@ -11,6 +11,9 @@ engine = db.create_engine('sqlite:///website/sneakerhead.db')
 Session = sessionmaker(bind=engine)
 session = Session()
 COLORS_LIST_FILE = 'website/generating_data_resources/colors-list.txt'
+MENS_DATASET = 'website/generating_data_resources/mens_shoe_dataset.csv'
+WOMENS_DATASET = 'website/generating_data_resources/womens_shoe_dataset.csv'
+
 
 def read_txt_file_as_list(filename):
 	txt_file = open(filename, "r")
@@ -19,7 +22,7 @@ def read_txt_file_as_list(filename):
 	return content_list
 
 
-def set_up_quantities(shoe):
+def set_up_quantities(shoe, smallest_size, largest_size):
 	colors_list = read_txt_file_as_list(COLORS_LIST_FILE)
 
 	amount_of_colors = [1,2,3,4,5,6,7,8]
@@ -35,7 +38,7 @@ def set_up_quantities(shoe):
 	for color in selected_colors:
 		shoe_color = Color(color=color)
 		session.add(shoe_color)
-		for size in np.arange(6, 15.5, .5):
+		for size in np.arange(smallest_size, largest_size + 0.5, .5):
 			quan_n_size = Quantity_Per_Size(size=size, quantity=10)
 			session.add(quan_n_size)
 			shoe_color.quan_per_size.append(quan_n_size)
@@ -46,7 +49,7 @@ def set_up_quantities(shoe):
 
 
 def add_male_shoes():
-    df = pd.read_csv('website/generating_data_resources/shoe_dataset.csv') # male data
+    df = pd.read_csv(MENS_DATASET)
     for index, row in df.iterrows():
         price = row['Prices']
         if len(price) > 1:
@@ -59,9 +62,24 @@ def add_male_shoes():
             price=price
         )
         session.add(shoe)
-        set_up_quantities(shoe)
+        set_up_quantities(shoe, 6, 15)
+    session.commit()
+
+
+def add_female_shoes():
+    df = pd.read_csv(WOMENS_DATASET)
+    for index, row in df.iterrows():
+        shoe = Shoe(
+            name=row['name'],
+            brand=row['brand'],
+            audience='Women',
+            price=row['prices.amountMax']
+        )
+        session.add(shoe)
+        set_up_quantities(shoe, 4, 12)
     session.commit()
 
 
 def populate_db_with_shoes():
+	add_female_shoes()
 	add_male_shoes()
