@@ -19,3 +19,4 @@ Lastly run the web app with `python main.py` and open the localhost outputted in
 
 ## Credits
 [Thanks to Mordka for the list of colors](URL 'https://gist.github.com/mordka/c65affdefccb7264efff77b836b5e717')
+[The site where I got my site icon from](URL 'http://clipart-library.com/clip-art/shoe-transparent-background-12.htm')
