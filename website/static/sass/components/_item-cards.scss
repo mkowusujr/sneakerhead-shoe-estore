@@ -16,3 +16,17 @@
         background-color: $itemHovered;
     }
 }
+
+.arrival-card {
+    @extend .item-card;
+    width: 10vw;
+    @media screen and (max-width: 700px){
+        width: 15vw;
+    }
+    @media screen and (max-width: 500px){
+        width: 20vw;
+    }
+    @media screen and (max-width: 500px){
+        width: 30vw;
+    }
+}
