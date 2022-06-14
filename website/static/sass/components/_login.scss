@@ -41,3 +41,18 @@
     padding-left: 0.5em;
     padding-right: 0.5em;
 }
+
+.mg-account {
+    @extend .login;
+    width: 80%;
+    form {
+        @include centerContent();
+    }
+    input[type="submit"] {
+        width: auto;
+    }
+
+    .past-transcations {
+        padding-bottom: 2em;
+    }
+}

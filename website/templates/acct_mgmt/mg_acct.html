@@ -3,5 +3,27 @@
 {% block title %}{{current_user.firstname}}{% endblock %}
 
 {% block body %}
-<h1>Welcome {{current_user.firstname}} {{current_user.lastname}}</h1>
+    <h1>Welcome {{current_user.firstname}} {{current_user.lastname}}</h1>
+    <div class="mg-account">
+        <h2>View Transcations</h2>
+        <a class="past-transcations">Past Transcations</a>
+
+        <h2>Change Email</h2>
+        <form>
+            <input type="text" placeholder="Enter Current Email" required>
+            <input type="text" placeholder="Enter New Email" required>
+            <input type="submit" value="Change Email">
+        </form>
+
+        <h2>Change Password</h2>
+        <form>
+            <input type="text" placeholder="Enter Current Password" required>
+            <input type="text" placeholder="Enter New Password" required>
+            <input type="submit" value="Change Password">
+        </form>
+
+        <form>
+            <input type="submit" value="Delete Account" onclick="sendDeleteRequest('/user/{{current_user.id}}')">
+        </form>
+    </div>
 {% endblock %}

@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, request, flash, url_for
+from flask import Blueprint, Response, render_template, redirect, request, flash, url_for
 from flask_login import login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from ..models import Customer, Cart
@@ -70,3 +70,24 @@ def display_account_page(user_id):
 def logout():
     logout_user()
     return redirect(url_for('acct_mgmt_views.display_login_page'))
+
+
+@acct_mgmt_views.route('/user/<int:user_id>/email', methods=['PUT'])
+@login_required
+def change_email(user_id):
+    pass
+
+
+@acct_mgmt_views.route('/user/<int:user_id>/password', methods=['PUT'])
+@login_required
+def change_password(user_id):
+    pass
+
+@acct_mgmt_views.route('/user/<int:user_id>', methods=['DELETE'])
+@login_required
+def delete_account(user_id):
+    user = Customer.query.get_or_404(user_id)
+    db.session.delete(user)
+    db.session.commit()
+    logout_user()
+    return Response(url_for('acct_mgmt_views.display_signup_page'), 200)
