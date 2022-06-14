@@ -92,7 +92,17 @@ def change_email(user_id):
 @acct_mgmt_views.route('/user/<int:user_id>/password', methods=['PUT'])
 @login_required
 def change_password(user_id):
-    pass
+    data = request.get_json()
+    user = Customer.query.get_or_404(user_id)
+    old_passord = data['old_pass']
+    new_passord = data['new_pass']
+    if check_password_hash(user.password_hash, old_passord):
+        user.password_hash = generate_password_hash(new_passord, method='sha256')
+        db.session.add(user)
+        db.session.commit()
+        return Response(url_for('acct_mgmt_views.display_account_page', user_id=user_id), 200)
+    else:
+        return Response('', 400)
 
 @acct_mgmt_views.route('/user/<int:user_id>', methods=['DELETE'])
 @login_required
