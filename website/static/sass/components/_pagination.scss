@@ -13,6 +13,14 @@
         padding-left: 2em;
         padding-right: 2em;
         border-color: $shadow;
+        @media only screen and (max-width: 900px) {
+            padding-left: 0.5em;
+            padding-right: 0.5em;
+            width: 40vw;
+            @media only screen and (max-width: 500px) {
+                font-size: small;
+            }
+        }
         &:first-child {
             @include paginateLeft();
         }
@@ -28,5 +36,15 @@
         padding-bottom: 1em;
         padding-left: 1em;
         padding-right: 1em;
+        @media screen and (max-width: 900px) {
+            padding-left: 0.15em;
+            padding-right: 0.15em;
+        }
+        @media screen and (max-width: 500px) {
+            font-size: small;
+        }
+        @media screen and (max-width: 370px) {
+            display: none;
+        }
     }
 }

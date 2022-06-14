@@ -11,9 +11,17 @@
 @mixin paginateLeft() {
     border-top-left-radius: 0.5em;
     border-bottom-left-radius: 0.5em;
+    // @media only screen and (max-width: 900px) {
+    //     border-top-left-radius: 0.25em;
+    //     border-bottom-left-radius: 0.25em;
+    // }
 }
 
 @mixin paginateRight() {
     border-top-right-radius: 0.5em;
     border-bottom-right-radius: 0.5em;
+    // @media only screen and (max-width: 900px) {
+    //     border-top-right-radius: 0.25em;
+    // border-bottom-right-radius: 0.25em;
+    // }
 }

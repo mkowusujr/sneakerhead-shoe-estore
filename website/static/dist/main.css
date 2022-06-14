@@ -217,6 +217,18 @@ td {
   padding-right: 2em;
   border-color: rgb(49, 49, 49);
 }
+@media only screen and (max-width: 900px) {
+  .pagination a {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    width: 40vw;
+  }
+}
+@media only screen and (max-width: 900px) and (max-width: 500px) {
+  .pagination a {
+    font-size: small;
+  }
+}
 .pagination a:first-child {
   border-top-left-radius: 0.5em;
   border-bottom-left-radius: 0.5em;
@@ -233,6 +245,22 @@ td {
   padding-bottom: 1em;
   padding-left: 1em;
   padding-right: 1em;
+}
+@media screen and (max-width: 900px) {
+  .pagination span {
+    padding-left: 0.15em;
+    padding-right: 0.15em;
+  }
+}
+@media screen and (max-width: 500px) {
+  .pagination span {
+    font-size: small;
+  }
+}
+@media screen and (max-width: 370px) {
+  .pagination span {
+    display: none;
+  }
 }
 
 .login, .shoe-product {
