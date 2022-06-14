@@ -75,7 +75,18 @@ def logout():
 @acct_mgmt_views.route('/user/<int:user_id>/email', methods=['PUT'])
 @login_required
 def change_email(user_id):
-    pass
+    data = request.get_json()
+    user = Customer.query.get_or_404(user_id)
+    old_email = data['old_email']
+    new_email = data['new_email']
+    if old_email == user.email:
+        user.email = new_email
+        db.session.add(user)
+        db.session.commit()
+        return Response(url_for('acct_mgmt_views.display_account_page', user_id=user_id), 200)
+    else:
+        return Response('', 400)
+
 
 
 @acct_mgmt_views.route('/user/<int:user_id>/password', methods=['PUT'])

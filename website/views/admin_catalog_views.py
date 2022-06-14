@@ -95,7 +95,6 @@ def update_product_color(shoe_id, color_id):
     color.color = data['color']
     db.session.add(color)
     db.session.commit()
-    print(data)
     return Response(url_for('admin_catalog_views.display_shoe', id=shoe_id), 200)
 
 
@@ -106,7 +105,6 @@ def update_product_color_quantity(shoe_id, color_id, quan_id):
     quan.quantity = data['quantity']
     db.session.add(quan)
     db.session.commit()
-    print(data)
     return Response(url_for('admin_catalog_views.display_shoe', id=shoe_id), 200)
 
 
