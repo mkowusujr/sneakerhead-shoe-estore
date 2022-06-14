@@ -47,7 +47,7 @@ body {
 .nav-bar ul {
   list-style-type: none;
   display: grid;
-  grid-template-columns: 60vw auto auto;
+  grid-template-columns: 50vw auto auto;
 }
 .nav-bar ul li {
   float: left;
