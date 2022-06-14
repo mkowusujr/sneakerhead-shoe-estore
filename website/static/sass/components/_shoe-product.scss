@@ -8,3 +8,47 @@
         width:fit-content!important;
     }
 }
+
+.title {
+    @include centerContent();
+}
+
+.shoe-image {
+    @include centerContent();
+    background-color: $item;
+
+    padding: 20vw;
+    border-radius: 1em;
+
+    margin: 1em;
+}
+
+.shoe-price {
+    margin-bottom: 4em;
+}
+
+.shoe-colors {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: 100%;
+
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+.color-item {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+}
+
+.shoe-sizes {
+    @extend .shoe-colors;
+}
+
+.size-item {
+    @extend .color-item;
+}

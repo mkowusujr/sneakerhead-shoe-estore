@@ -192,6 +192,43 @@ td {
   width: fit-content !important;
 }
 
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.shoe-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #DBCBD8;
+  padding: 20vw;
+  border-radius: 1em;
+  margin: 1em;
+}
+
+.shoe-price {
+  margin-bottom: 4em;
+}
+
+.shoe-colors, .shoe-sizes {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.color-item, .size-item {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+}
+
 .new-arrivals {
   display: flex;
   flex-direction: column;
