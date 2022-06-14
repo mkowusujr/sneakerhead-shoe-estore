@@ -11,7 +11,7 @@
         <h2>New Shoe Arrivals</h2>
         <ul>
             {% for shoe in recently_added %}
-                <li class="item-card" onclick="redirectUrl('{{url_for('cust_catalog_views.display_product', id=shoe.id)}}')">
+                <li class="arrival-card" onclick="redirectUrl('{{url_for('cust_catalog_views.display_product', id=shoe.id)}}')">
                     <p>{{ shoe.name  }}</p>
                     <p>Colors: {{shoe.colors | length }}</p>
                     <p>${{ shoe.price  }}</p>

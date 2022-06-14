@@ -43,7 +43,8 @@ body {
 .nav-bar {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   background-color: #101935;
-  width: 100%;
+  width: 100vw;
+  height: 55px;
   overflow: hidden;
   font-size: larger;
   position: -webkit-sticky;
@@ -53,7 +54,7 @@ body {
 .nav-bar ul {
   list-style-type: none;
   display: grid;
-  grid-template-columns: 50vw auto auto;
+  grid-template-columns: auto auto auto;
 }
 .nav-bar ul li {
   float: left;
@@ -75,6 +76,17 @@ body {
 }
 .nav-bar .nav-block {
   justify-self: end;
+}
+.nav-bar nav-icon {
+  display: none;
+}
+@media screen and (max-width: 1220px) {
+  .nav-bar {
+    display: flex;
+  }
+  .nav-bar .links {
+    display: none;
+  }
 }
 
 footer {
@@ -134,7 +146,7 @@ td {
   padding-left: 1em;
 }
 
-.item-card {
+.item-card, .arrival-card {
   display: block;
   background-color: #DBCBD8;
   text-align: left;
@@ -146,13 +158,32 @@ td {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 @media only screen and (max-width: 900px) {
-  .item-card {
+  .item-card, .arrival-card {
     width: 35vw;
     margin: 0.5em;
   }
 }
-.item-card:hover, .item-card:active {
+.item-card:hover, .arrival-card:hover, .item-card:active, .arrival-card:active {
   background-color: #d1a4ca;
+}
+
+.arrival-card {
+  width: 10vw;
+}
+@media screen and (max-width: 700px) {
+  .arrival-card {
+    width: 15vw;
+  }
+}
+@media screen and (max-width: 500px) {
+  .arrival-card {
+    width: 20vw;
+  }
+}
+@media screen and (max-width: 500px) {
+  .arrival-card {
+    width: 30vw;
+  }
 }
 
 .collections, .colors-grid, .brand-collections {
@@ -185,6 +216,7 @@ td {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   border: none;
   border-color: none;
+  width: 80vw;
 }
 .shoe-product input[type=submit] {
   width: -webkit-fit-content !important;
@@ -238,6 +270,16 @@ td {
 .new-arrivals ul {
   display: grid;
   grid-template-columns: auto auto auto auto auto;
+}
+@media screen and (max-width: 700px) {
+  .new-arrivals ul {
+    grid-template-columns: auto auto auto;
+  }
+}
+@media screen and (max-width: 400px) {
+  .new-arrivals ul {
+    grid-template-columns: auto auto;
+  }
 }
 
 .pagination {
@@ -305,7 +347,7 @@ td {
   }
 }
 
-.login, .shoe-product {
+.login, .mg-account, .shoe-product {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -315,15 +357,15 @@ td {
   border-radius: 0.5em;
   padding: 1.5em;
 }
-.login h2, .shoe-product h2 {
+.login h2, .mg-account h2, .shoe-product h2 {
   font-size: x-large;
   align-self: flex-start;
 }
-.login form, .shoe-product form {
+.login form, .mg-account form, .shoe-product form {
   background-color: white;
   padding: 0 !important;
 }
-.login input[type=submit], .shoe-product input[type=submit] {
+.login input[type=submit], .mg-account input[type=submit], .shoe-product input[type=submit] {
   background-color: #f06250;
   border: 1px solid #dadada;
   border-radius: 0.25em;
@@ -333,7 +375,7 @@ td {
   padding-right: 1em;
   width: 88%;
 }
-.login input[type=submit]:hover, .shoe-product input[type=submit]:hover {
+.login input[type=submit]:hover, .mg-account input[type=submit]:hover, .shoe-product input[type=submit]:hover {
   background-color: #ff8879;
 }
 
@@ -347,4 +389,19 @@ td {
   padding: 8px;
   padding-left: 0.5em;
   padding-right: 0.5em;
+}
+
+.mg-account {
+  width: 80%;
+}
+.mg-account form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mg-account input[type=submit] {
+  width: auto;
+}
+.mg-account .past-transcations {
+  padding-bottom: 2em;
 }/*# sourceMappingURL=main.css.map */
