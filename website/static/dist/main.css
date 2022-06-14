@@ -132,12 +132,19 @@ td {
 .item-card {
   display: block;
   background-color: #DBCBD8;
-  text-align: center;
+  text-align: left;
   font-size: large;
-  padding: 84px 86px;
+  padding: 1em 1em;
   border-radius: 0.15em;
   margin: 0.75em;
+  width: 25vw;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+@media only screen and (max-width: 900px) {
+  .item-card {
+    width: 35vw;
+    margin: 0.5em;
+  }
 }
 .item-card:hover, .item-card:active {
   background-color: #d1a4ca;

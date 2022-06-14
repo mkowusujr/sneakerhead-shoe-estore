@@ -1,12 +1,17 @@
 .item-card {
     display: block;
     background-color: $item;
-    text-align: center;
+    text-align: left;
     font-size: large;
-    padding: 84px 86px;
+    padding: 1em 1em;
     border-radius: 0.15em;
     margin: 0.75em;
+    width: 25vw;
     @include dropShadow();
+    @media only screen and (max-width: 900px) {
+        width: 35vw;
+        margin: 0.5em;
+    }
     &:hover, &:active {
         background-color: $itemHovered;
     }
