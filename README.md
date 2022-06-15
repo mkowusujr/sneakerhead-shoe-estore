@@ -1,11 +1,11 @@
 # Sneaker Head Shoe E-store
 This project was created with
-- python using the microframework [Flask](URL 'https://flask.palletsprojects.com/en/2.1.x/')
-- sqlite database managed with [flask_sqlalchemy](URL 'https://flask-sqlalchemy.palletsprojects.com/en/2.x/')
+- python using the microframework [Flask](https://flask.palletsprojects.com/en/2.1.x/)
+- sqlite database managed with [flask_sqlalchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/)
 - jQuery to send asynchronous HTTP (Ajax) requests to the webserver
 - javascript to manipulate the DOM
 - sass to make managing the css across the site more efficent
-- This web app is hosted via Heroku and can found [here](URL 'https://sneakerhead-shoe-estore.herokuapp.com/')
+- This web app is hosted via Heroku and can found [here](https://sneakerhead-shoe-estore.herokuapp.com/)
 
 ### The Database Design
 ![database](shoe_estore_db_diagram.png)
