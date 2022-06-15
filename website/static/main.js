@@ -54,3 +54,16 @@ function addSize(requestUrl){
     
     document.getElementById("quantities").appendChild(form);
 }
+
+function navToggle(){
+    let navbarLinks = document.getElementsByClassName('nav-links')[0];
+    if (navbarLinks.style.display === "block") {
+        navbarLinks.style.display = "none";
+        document.body.style.overflow = 'visible';
+        window.onscroll = function() {};
+      } else {
+        navbarLinks.style.display = "block";
+        document.body.style.overflow = "hidden";
+        window.onscroll = () => { window.scroll(0, 0); };
+      }
+}

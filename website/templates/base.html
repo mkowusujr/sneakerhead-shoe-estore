@@ -12,47 +12,56 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    <div class="nav-bar">
-        <ul>
-            <div>
-                <li><a href="{{ url_for('home_view.home_page') }}">Home</a></li>
-                <li><a href="{{ url_for('cust_catalog_views.releases_page') }}">New Releases</a></li>
-                <li><a href="{{ url_for('cust_catalog_views.mens_releases_page') }}">Mens</a></li>
-                <li><a href="{{ url_for('cust_catalog_views.womens_releases_page') }}">Womens</a></li>
-                <li><a href="{{ url_for('cust_catalog_views.kids_releases_page') }}">Kids</a></li>
-            </div>
-            
-            <li>
-                <a>
-                    <form id="search" action="/releases/browse/" method="GET">
-                        <input type="search" name="search" placeholder="Search">
-                    </form>
-                </a>
-            </li>
-            
-            <div class="nav-block">
-            {% if current_user.is_authenticated %}
-                <li>
-                    <a href="{{url_for('cust_cart_views.display_cart_page')}}">Cart</a>
-                </li>
-                <li>
-                    <a href="{{ url_for( 'acct_mgmt_views.display_account_page', user_id=current_user.id ) }}">Hello {{current_user.firstname}}</a>
-                </li>
-                <li>
-                    <a href="{{url_for('acct_mgmt_views.logout')}}"">Sign Out</a>
-                </li>
-            {% else %}
-                <li>
-                    <a href="{{url_for('acct_mgmt_views.display_signup_page')}}">Join Us</a>
-                </li>
-                <li>
-                    <a href="{{url_for('acct_mgmt_views.display_login_page')}}"">Sign In</a>
-                </li>
-            </div>
+    <nav class="nav-bar">
+        <div class="mobile-nav">
+            <a href="#" class="toggle-button" onclick="navToggle()">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>
+            <a class="nav-title">Sneaker Headz.</a>
+        </div>
+        <div class="nav-links">
+            <ul>
+                <div class="nav-releases">
+                    <li><a href="{{ url_for('home_view.home_page') }}">Home</a></li>
+                    <li><a href="{{ url_for('cust_catalog_views.releases_page') }}">New Releases</a></li>
+                    <li><a href="{{ url_for('cust_catalog_views.mens_releases_page') }}">Mens</a></li>
+                    <li><a href="{{ url_for('cust_catalog_views.womens_releases_page') }}">Womens</a></li>
+                    <li><a href="{{ url_for('cust_catalog_views.kids_releases_page') }}">Kids</a></li>
+                </div>
                 
-            {% endif %}
-        </ul> 
-    </div>
+                <li>
+                    <a>
+                        <form id="search" action="/releases/browse/" method="GET">
+                            <input type="search" name="search" placeholder="Search">
+                        </form>
+                    </a>
+                </li>
+                
+                <div class="acct-block">
+                    {% if current_user.is_authenticated %}
+                        <li>
+                            <a href="{{url_for('cust_cart_views.display_cart_page')}}">Cart</a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for( 'acct_mgmt_views.display_account_page', user_id=current_user.id ) }}">{{current_user.firstname}}</a>
+                        </li>
+                        <li>
+                            <a href="{{url_for('acct_mgmt_views.logout')}}"">Sign Out</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="{{url_for('acct_mgmt_views.display_signup_page')}}">Join Us</a>
+                        </li>
+                        <li>
+                            <a href="{{url_for('acct_mgmt_views.display_login_page')}}"">Sign In</a>
+                        </li>
+                    {% endif %}
+                </div>  
+            </ul> 
+        </div>
+    </nav>
 
     <div class="content">
         {% block body %}{% endblock %}

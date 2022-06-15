@@ -108,3 +108,14 @@ class Quantity_Per_Size(db.Model):
     color = db.relationship('Color', back_populates='quan_per_size')
     def __repr__(self):
         return "<quanpersize {}, size {}, quan{}>".format(self.id, self.size, self.quantity)
+
+
+# class Transcation(db.Model):
+#     __tablename__ = 'transcation'
+
+#     id = db.Column(db.Integer(), primary_key=True)
+
+
+# class PurchasedShoe(db.Model):
+#     __tablename__ = 'purchased_shoe'
+    

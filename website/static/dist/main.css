@@ -44,48 +44,130 @@ body {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   background-color: #101935;
   width: 100vw;
-  height: 55px;
+  min-height: 55px;
   overflow: hidden;
   font-size: larger;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
 }
-.nav-bar ul {
+.nav-bar .nav-links ul {
   list-style-type: none;
   display: grid;
   grid-template-columns: auto auto auto;
 }
-.nav-bar ul li {
+.nav-bar .nav-links ul li {
   float: left;
 }
-.nav-bar ul li a {
+.nav-bar .nav-links ul li a {
   color: white;
   display: block;
   padding: 14px 16px;
   text-align: center;
   text-decoration: none;
 }
-.nav-bar ul li a:hover, .nav-bar ul li a:active {
+.nav-bar .nav-links ul li a:hover, .nav-bar .nav-links ul li a:active {
   background-color: #1c2c5a;
 }
-.nav-bar input[type=search] {
+.nav-bar .nav-links input[type=search] {
   border-radius: 0.25em;
   padding: 0px 16px;
   width: 100%;
 }
-.nav-bar .nav-block {
+.nav-bar .nav-links .acct-block {
   justify-self: end;
-}
-.nav-bar nav-icon {
-  display: none;
 }
 @media screen and (max-width: 1220px) {
   .nav-bar {
     display: flex;
+    flex-direction: column;
   }
-  .nav-bar .links {
+  .nav-bar .nav-links {
     display: none;
+    width: 100%;
+  }
+  .nav-bar .nav-links ul {
+    display: flex;
+    grid-template-columns: none;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: calc(100vh - 55px);
+  }
+  .nav-bar .nav-links ul .nav-releases {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: 55%;
+  }
+  .nav-bar .nav-links ul .nav-releases li {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .nav-bar .nav-links ul li {
+    margin-top: auto;
+    width: 100%;
+  }
+  .nav-bar .nav-links ul li input[type=search] {
+    width: 15em;
+  }
+  .nav-bar .nav-links ul .acct-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: 25%;
+  }
+  .nav-bar .nav-links ul .acct-block li {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .nav-bar .nav-links.active {
+    display: flex;
+  }
+}
+
+.mobile-nav {
+  display: flex;
+  width: 100%;
+  margin-top: 13px;
+  margin-bottom: 13px;
+}
+
+.nav-title {
+  display: none;
+  margin-top: auto;
+  margin-bottom: auto;
+  color: white;
+  font-size: x-large;
+}
+@media screen and (max-width: 1220px) {
+  .nav-title {
+    display: block;
+  }
+}
+
+.toggle-button {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+.toggle-button .bar {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+}
+@media screen and (max-width: 1220px) {
+  .toggle-button {
+    display: flex;
   }
 }
 
