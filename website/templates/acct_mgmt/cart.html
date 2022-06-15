@@ -34,8 +34,11 @@
             {% endfor %}
         </table>
         <h3>Total Price: ${{ total_price }}</h3>
+        <form action="{{url_for('transcations_views.display_transcations')}}" method="POST">
+            <input type="submit" value="Checkout Cart">
+        </form>
     {% else %}
         <p>Sad empty cart :(</p>
-        <p>go add some items into your cart to make it happy</p>
+        <p>Go add some items into your cart to make it happy</p>
     {% endif %}
 {% endblock %}

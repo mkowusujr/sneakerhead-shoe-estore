@@ -129,10 +129,15 @@ body {
 }
 
 .mobile-nav {
-  display: flex;
-  width: 100%;
-  margin-top: 13px;
-  margin-bottom: 13px;
+  display: none;
+}
+@media screen and (max-width: 1220px) {
+  .mobile-nav {
+    display: flex;
+    width: 100%;
+    margin-top: 13px;
+    margin-bottom: 13px;
+  }
 }
 
 .nav-title {

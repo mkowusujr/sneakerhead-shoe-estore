@@ -14,6 +14,8 @@ class Customer(db.Model, UserMixin):
     # one customer has one cart
     cart = db.relationship('Cart', back_populates="owner", uselist=False)
 
+    transcations = db.relationship("Transcation", back_populates="owner", lazy=True)
+
 
 class Cart(db.Model):
     __tablename__ = 'cart'
@@ -110,12 +112,26 @@ class Quantity_Per_Size(db.Model):
         return "<quanpersize {}, size {}, quan{}>".format(self.id, self.size, self.quantity)
 
 
-# class Transcation(db.Model):
-#     __tablename__ = 'transcation'
+class Transcation(db.Model):
+    __tablename__ = 'transcation'
 
-#     id = db.Column(db.Integer(), primary_key=True)
+    id = db.Column(db.Integer(), primary_key=True)
+    # one transcation many shoes
+    shoes = db.relationship("PurchasedShoe", back_populates="transc", lazy=True)
+    # many transcations one owner
+    owner = db.relationship('Customer', back_populates='transcations', uselist=False)
+    owner_id = db.Column(db.Integer(), db.ForeignKey('customer.id'))
 
 
-# class PurchasedShoe(db.Model):
-#     __tablename__ = 'purchased_shoe'
-    
+class PurchasedShoe(db.Model):
+    __tablename__ = 'purchased_shoe'
+
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(length=30), nullable=False)
+    quantity = db.Column(db.Integer(), nullable=False)
+    color = db.Column(db.String(length=30), nullable=False)
+    size = db.Column(db.Float(), nullable=False)
+    shoe_id = db.Column(db.Integer(), db.ForeignKey('shoe.id'))
+    # many shoes one transcation
+    transc = db.relationship('Transcation', back_populates='shoes', uselist=False)
+    transc_id = db.Column(db.Integer(), db.ForeignKey('transcation.id'))

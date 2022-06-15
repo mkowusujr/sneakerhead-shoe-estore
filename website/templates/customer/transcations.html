@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Transcations
+{% endblock %}
+
+{% block body %}
+    {% if transcations | length > 0 %}
+        <div class="login">
+            {% for purchase in transcations %}
+                {% for shoe in purchase.shoes %}
+                    <div>
+                        {{shoe.name}}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    {% else%}
+        <p>You have made no transcations :(</p>
+        <p>Please buy something :)</p>
+    {% endif %}
+{% endblock %}

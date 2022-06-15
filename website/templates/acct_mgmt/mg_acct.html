@@ -6,7 +6,8 @@
     <h1>Welcome {{current_user.firstname}} {{current_user.lastname}}</h1>
     <div class="mg-account">
         <h2>View Transcations</h2>
-        <a class="past-transcations">Past Transcations</a>
+        <a href="{{url_for('transcations_views.display_transcations')}}"
+        class="past-transcations">Past Transcations</a>
 
         <h2>Change Email</h2>
         <form id="put-form" action="{{url_for('acct_mgmt_views.change_email', user_id=current_user.id)}}">

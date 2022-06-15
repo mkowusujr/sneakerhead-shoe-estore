@@ -1,6 +1,6 @@
 from flask import Blueprint, Response, render_template, redirect, request, url_for
 from flask_login import login_required, current_user
-from ..models import Quantity_Per_Size, ReservedShoe, Shoe, Cart, Color
+from ..models import Quantity_Per_Size, ReservedShoe, Shoe, Color
 cust_cart_views = Blueprint('cust_cart_views', __name__)
 from .. import db
 

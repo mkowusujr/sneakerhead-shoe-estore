@@ -13,6 +13,7 @@ from .views.admin_catalog_views import admin_catalog_views
 from .views.cust_cart_views import cust_cart_views
 from .views.cust_catalog_views import cust_catalog_views
 from .views.home_view import home_view
+from .views.transcations_views import transcations_views
 from . import init_shoe_data
 
 DB_NAME = 'sneakerhead.db'
@@ -40,6 +41,7 @@ def create_app():
     app.register_blueprint(cust_cart_views, url_prefix='/')
     app.register_blueprint(cust_catalog_views, url_prefix='/')
     app.register_blueprint(home_view, url_prefix='/')
+    app.register_blueprint(transcations_views, url_prefix='/')
     
     # populate_db_with_shoes()
     return app
