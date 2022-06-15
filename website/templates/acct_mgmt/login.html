@@ -3,7 +3,7 @@
 {% block title %}Sign In{% endblock %}
 
 {% block body %}
-    <h1>Sneaker Headz</h1>
+    <h1>Sneaker Head</h1>
     <div class="login">
         <h2>Sign-In</h2>
         <form class="content" action="{{url_for('acct_mgmt_views.login')}}" method="POST">
@@ -15,8 +15,8 @@
         </form> 
     </div>
     
-    <p class="login-pg-p">New to Sneaker Headz?</p>
+    <p class="login-pg-p">New to Sneaker Head?</p>
     <button class="login-pg-sign-btn" onclick="redirectUrl('{{url_for('acct_mgmt_views.signup')}}')">
-        Create your Sneaker Headz Account
+        Create your Sneaker Head Account
     </button>
 {% endblock %}

@@ -79,7 +79,7 @@ def brand_releases_page(brand):
 
 @cust_catalog_views.route('/releases/browse/<string:searchQuery>')
 def search_any_product(searchQuery):
-    title = "Sneaker Headz Releases"
+    title = "Sneaker Head Releases"
     page = request.args.get('page', 1, type=int)
     collection = Shoe.query.filter(Shoe.name.like('%'+searchQuery+'%') | Shoe.brand.like('%'+searchQuery+'%')).paginate(page=page, per_page=PER_PAGE)
     routeUrl = 'cust_catalog_views.search_any_product'
