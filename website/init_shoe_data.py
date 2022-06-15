@@ -81,5 +81,5 @@ def add_female_shoes():
 
 
 def populate_db_with_shoes():
-	add_female_shoes()
 	add_male_shoes()
+	add_female_shoes()

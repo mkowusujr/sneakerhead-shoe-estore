@@ -6,7 +6,7 @@ home_view = Blueprint('home_view', __name__)
 @home_view.route('/')
 @home_view.route('/home')
 def home_page():
-    recently_added = Shoe.query.order_by(Shoe.id.desc()).limit(5)
+    recently_added = Shoe.query.filter_by(audience='Men').order_by(Shoe.id.desc()).limit(5)
     brands = [
         "adidas",
         "aldo",
