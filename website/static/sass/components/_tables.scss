@@ -6,6 +6,10 @@ table {
     padding: 0.5em;
     width: 85%;
     @include dropShadow();
+    @media screen and (max-width:470px) {
+        width: 60%;
+        font-size: 0.60em;
+    }
 }
 
 th, td {
