@@ -9,11 +9,21 @@
     {% if transcations | length > 0 %}
         <div class="login">
             {% for purchase in transcations %}
-                {% for shoe in purchase.shoes %}
-                    <div>
-                        {{shoe.name}}
-                    </div>
-                {% endfor %}
+                <table>
+                    {% for shoe in purchase.shoes %}
+                        <tr>
+                            <div>
+                                <td>name {{shoe.name}}</td>
+                                <td>color {{shoe.color}}</td>
+                                <td>size {{shoe.size}}</td>
+                                <td>quantity {{shoe.quantity}}</td>
+                                <td>price ${{shoe.price}}</td>
+                            </div>
+                        </tr>
+                    {% endfor %}
+                </table>
+                <h3>Transcation Id: {{purchase.id}}</h3>
+                <p style="margin-bottom: 2em;">Total Price ${{"{:.2f}".format(purchase.total_price)}}</p>
             {% endfor %}
         </div>
     {% else%}

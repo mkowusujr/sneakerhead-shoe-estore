@@ -51,6 +51,9 @@ body {
   position: sticky;
   top: 0;
 }
+.nav-bar .nav-links {
+  display: block;
+}
 .nav-bar .nav-links ul {
   list-style-type: none;
   display: grid;

@@ -57,13 +57,29 @@ function addSize(requestUrl){
 
 function navToggle(){
     let navbarLinks = document.getElementsByClassName('nav-links')[0];
+    let width = screen.width;
     if (navbarLinks.style.display === "block") {
         navbarLinks.style.display = "none";
         document.body.style.overflow = 'visible';
         window.onscroll = function() {};
-      } else {
+    } else {
         navbarLinks.style.display = "block";
         document.body.style.overflow = "hidden";
         window.onscroll = () => { window.scroll(0, 0); };
-      }
+    }
 }
+
+let widthMatch = window.matchMedia("(min-width: 1221px)");
+// mm in the function arg is the matchMedia object, passed back into the function
+widthMatch.addEventListener('change', function(mm) {
+    let navbarLinks = document.getElementsByClassName('nav-links')[0];
+    if (mm.matches) {
+        // it matches the media query: that is, min-width is >= 500px
+        navbarLinks.style.display = "block";
+    }
+    else {
+        // it no longer matches the media query
+        // remove the event listener
+        navbarLinks.style.display = "none";
+    }
+});

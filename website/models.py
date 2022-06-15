@@ -116,6 +116,7 @@ class Transcation(db.Model):
     __tablename__ = 'transcation'
 
     id = db.Column(db.Integer(), primary_key=True)
+    total_price = db.Column(db.Float(), nullable=False)
     # one transcation many shoes
     shoes = db.relationship("PurchasedShoe", back_populates="transc", lazy=True)
     # many transcations one owner
@@ -131,6 +132,7 @@ class PurchasedShoe(db.Model):
     quantity = db.Column(db.Integer(), nullable=False)
     color = db.Column(db.String(length=30), nullable=False)
     size = db.Column(db.Float(), nullable=False)
+    price = db.Column(db.Float(), nullable=False)
     shoe_id = db.Column(db.Integer(), db.ForeignKey('shoe.id'))
     # many shoes one transcation
     transc = db.relationship('Transcation', back_populates='shoes', uselist=False)

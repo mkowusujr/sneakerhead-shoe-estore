@@ -1,6 +1,6 @@
 from flask import Blueprint, Response, render_template, redirect, request, url_for
 from flask_login import login_required, current_user
-from ..models import Customer, Transcation, PurchasedShoe
+from ..models import Color, Customer, Quantity_Per_Size, Transcation, PurchasedShoe, Shoe
 transcations_views = Blueprint('transcations_views', __name__)
 from .. import db
 
@@ -25,7 +25,8 @@ def add_transcation():
     
     new_transc = Transcation(
         owner = user,
-        owner_id = user.id
+        owner_id = user.id,
+        total_price = 0
     )
     db.session.add(new_transc)
     db.session.commit()
@@ -37,15 +38,23 @@ def add_transcation():
             color = shoe.color,
             size = shoe.size,
             quantity = shoe.quantity,
-            shoe_id = shoe.id,
+            price = shoe.reserved_shoe.price,
+            shoe_id = shoe.reserved_shoe.id,
             transc = new_transc,
             transc_id = new_transc.id
         )
+        inventory_shoe = Shoe.query.get_or_404(shoe.reserved_shoe.id)
+        inventory_shoe_color = Color.query.filter_by(color=shoe.color, shoe_id=inventory_shoe.id).first()
+        inventory_quantity = Quantity_Per_Size.query.get_or_404(inventory_shoe_color.id)
+
+        inventory_quantity.quantity -= shoe.quantity
+        db.session.add(inventory_shoe)
         db.session.add(purchased_shoe)
         db.session.delete(shoe)
         db.session.commit()
 
         new_transc.shoes.append(purchased_shoe)
+        new_transc.total_price += (shoe.quantity * shoe.reserved_shoe.price)
         db.session.add(new_transc)
         db.session.commit()
 
