@@ -14,11 +14,11 @@ This project was created with
 First Clone the Repo and cd into it
 `gitclone https://github.com/mkowusujr/sneakerhead-shoe-estore.git`
 
-Next run `pip install -r requirements` in your commandline. You can do this in a python virtual environment to keep the versions of the dependices isolated in the project folder and not affect the depencies of any other python projects you may have on your system. [Learn more here](URL 'https://medium.com/co-learning-lounge/create-virtual-environment-python-windows-2021-d947c3a3ca78')
+Next run `pip install -r requirements` in your commandline. You can do this in a python virtual environment to keep the versions of the dependices isolated in the project folder and not affect the depencies of any other python projects you may have on your system. [Learn more here](https://medium.com/co-learning-lounge/create-virtual-environment-python-windows-2021-d947c3a3ca78)
 
 Lastly run the web app with `python main.py` and open the localhost outputted in the terminal in your web browser
 
 ## Credits
-[Thanks to Mordka for the list of colors](URL 'https://gist.github.com/mordka/c65affdefccb7264efff77b836b5e717')
+[Thanks to Mordka for the list of colors](https://gist.github.com/mordka/c65affdefccb7264efff77b836b5e717)
 
-[The site where I got my site icon from](URL 'http://clipart-library.com/clip-art/shoe-transparent-background-12.htm')
+[The site where I got my site icon from](http://clipart-library.com/clip-art/shoe-transparent-background-12.htm)
