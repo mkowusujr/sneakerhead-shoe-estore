@@ -5,7 +5,7 @@ This project was created with
 - jQuery to send asynchronous HTTP (Ajax) requests to the webserver
 - javascript to manipulate the DOM
 - sass to make managing the css across the site more efficent
-- This web app is hosted via Heroku and can found at [sneakerhead-shoe-estore.herokuapp.com](URL 'https://sneakerhead-shoe-estore.herokuapp.com/')
+- This web app is hosted via Heroku and can found [here](URL 'https://sneakerhead-shoe-estore.herokuapp.com/')
 
 ### The Database Design
 ![database](shoe_estore_db_diagram.png)
