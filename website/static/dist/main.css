@@ -372,7 +372,7 @@ td {
     grid-template-columns: auto auto auto;
   }
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
   .new-arrivals ul {
     grid-template-columns: auto auto;
   }
