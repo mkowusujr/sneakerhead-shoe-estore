@@ -1,3 +1,10 @@
+"""
+The Models of the shoe store database.
+All relationships between the tables in the database are
+specified here.
+
+@author: Mathew Owusu Jrs
+"""
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
 from . import db
