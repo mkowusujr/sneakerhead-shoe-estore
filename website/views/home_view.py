@@ -1,3 +1,9 @@
+"""
+Manages all routes related to home
+
+Author: Mathew Owusu Jr
+"""
+
 from flask import Blueprint, render_template
 from flask_login import current_user
 from ..models import Shoe
@@ -6,6 +12,12 @@ home_view = Blueprint('home_view', __name__)
 @home_view.route('/')
 @home_view.route('/home')
 def home_page():
+    """
+    Fetches recently added shoes to the database and displays it on the home page
+
+    Returns:
+        A rendered HTML template
+    """
     recently_added = Shoe.query.filter_by(audience='Men').order_by(Shoe.id.desc()).limit(5)
     brands = [
         "adidas",
@@ -25,12 +37,6 @@ def home_page():
         "under armour",
         "vans"
         ]
-    # shoes = Shoe.query.all()
-    # brands = []
-    # for shoe in shoes:
-    #     if not brands.__contains__(shoe.brand):
-    #         brands.append(shoe.brand)
-    # brands.sort()
     
     return render_template("index.html", 
     current_user=current_user, 

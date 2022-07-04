@@ -1,8 +1,9 @@
 """
 The Entry point for this web applicaion
 
-@author: Mathew Owusu Jr
+Author: Mathew Owusu Jr
 """
+
 
 from website import create_app
 

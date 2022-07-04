@@ -1,17 +1,35 @@
+"""
+Manages all routes related to transcations
+
+Author: Mathew Owusu Jr
+"""
+
+
 from flask import Blueprint, Response, render_template, redirect, request, url_for
 from flask_login import login_required, current_user
 from ..models import Color, Customer, Quantity_Per_Size, Transcation, PurchasedShoe, Shoe
 transcations_views = Blueprint('transcations_views', __name__)
 from .. import db
 
+
 @transcations_views.before_request
 @login_required
 def login_to_access():
+    """
+    Acts as a middle ware that ensure none of this blueprints routes can be
+    accessed if no user is currently logged in
+    """
     pass
 
 
 @transcations_views.route('/user/transcations', methods=['GET'])
 def display_transcations():
+    """
+    Display a user's transcations
+
+    Returns:
+        A rendered HTML template
+    """
     user = Customer.query.get_or_404(current_user.id)
     transcations = user.transcations
     return render_template('customer/transcations.html', 
@@ -21,6 +39,12 @@ def display_transcations():
 
 @transcations_views.route('/user/transcations', methods=['POST'])
 def add_transcation():
+    """
+    Adds a transcation to the user's list of transcations
+
+    Returns:
+        Redirects the page to the display transcations page
+    """
     user = Customer.query.get_or_404(current_user.id)
     
     new_transc = Transcation(

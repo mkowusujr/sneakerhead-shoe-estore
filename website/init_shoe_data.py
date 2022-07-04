@@ -2,8 +2,9 @@
 A utility python program that populates the shoe store database
 with data from csv files that have been preselected.
 
-@author: Mathew Owusu Jr
+Author: Mathew Owusu Jr
 """
+
 
 import pandas as pd
 import sqlalchemy as db
